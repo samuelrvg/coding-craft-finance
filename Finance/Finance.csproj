@@ -196,13 +196,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IEntidadeNaoEditavel.cs" />
+    <Compile Include="Interfaces\IEntidade.cs" />
     <Compile Include="Migrations\202001120339152_seed.cs" />
     <Compile Include="Migrations\202001120339152_seed.designer.cs">
       <DependentUpon>202001120339152_seed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001120407095_auditoria.cs" />
+    <Compile Include="Migrations\202001120407095_auditoria.designer.cs">
+      <DependentUpon>202001120407095_auditoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Auditoria.cs" />
     <Compile Include="Models\Transferencia.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Banco.cs" />
@@ -325,6 +332,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001120339152_seed.resx">
       <DependentUpon>202001120339152_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001120407095_auditoria.resx">
+      <DependentUpon>202001120407095_auditoria.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

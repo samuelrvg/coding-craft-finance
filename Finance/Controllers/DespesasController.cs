@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Finance.Models;
+using System.Transactions;
 
 namespace Finance.Controllers
 {
@@ -48,8 +49,14 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Despesas.Add(despesa);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Despesas.Add(despesa);
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -82,8 +89,14 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(despesa).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(despesa).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
             ViewBag.DespesaCategoriaId = new SelectList(db.DespesaCategorias, "DespesaCategoriaId", "Nome", despesa.DespesaCategoriaId);
@@ -110,9 +123,15 @@ namespace Finance.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Despesa despesa = await db.Despesas.FindAsync(id);
-            db.Despesas.Remove(despesa);
-            await db.SaveChangesAsync();
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                Despesa despesa = await db.Despesas.FindAsync(id);
+                db.Despesas.Remove(despesa);
+                await db.SaveChangesAsync();
+
+                scope.Complete();
+            }
+
             return RedirectToAction("Index");
         }
 

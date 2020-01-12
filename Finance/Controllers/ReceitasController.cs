@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Finance.Models;
+using System.Transactions;
 
 namespace Finance.Controllers
 {
@@ -49,8 +50,14 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Receitas.Add(receita);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Receitas.Add(receita);
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -85,8 +92,14 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(receita).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(receita).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
             ViewBag.BancoId = new SelectList(db.Bancos, "BancoId", "Nome", receita.BancoId);
@@ -114,9 +127,15 @@ namespace Finance.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Receita receita = await db.Receitas.FindAsync(id);
-            db.Receitas.Remove(receita);
-            await db.SaveChangesAsync();
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                Receita receita = await db.Receitas.FindAsync(id);
+                db.Receitas.Remove(receita);
+                await db.SaveChangesAsync();
+
+                scope.Complete();
+            }
+
             return RedirectToAction("Index");
         }
 

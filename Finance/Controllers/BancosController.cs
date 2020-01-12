@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Finance.Models;
+using System.Transactions;
 
 namespace Finance.Controllers
 {
@@ -46,8 +47,14 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Bancos.Add(banco);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Bancos.Add(banco);
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -78,8 +85,14 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(banco).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(banco).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
             return View(banco);
@@ -105,9 +118,15 @@ namespace Finance.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Banco banco = await db.Bancos.FindAsync(id);
-            db.Bancos.Remove(banco);
-            await db.SaveChangesAsync();
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                Banco banco = await db.Bancos.FindAsync(id);
+                db.Bancos.Remove(banco);
+                await db.SaveChangesAsync();
+
+                scope.Complete();
+            }
+
             return RedirectToAction("Index");
         }
 

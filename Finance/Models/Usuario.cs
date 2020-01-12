@@ -17,6 +17,8 @@ namespace Finance.Models
             return userIdentity;
         }
 
+        //public string Nome { get; set; }
+
         public virtual ICollection<Conta> Contas { get; set; }
     }
 }

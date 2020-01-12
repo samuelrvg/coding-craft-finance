@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Finance.Models;
+using System.Transactions;
 
 namespace Finance.Controllers
 {
@@ -46,8 +47,14 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ReceitaCategorias.Add(receitaCategoria);
-                await db.SaveChangesAsync();
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.ReceitaCategorias.Add(receitaCategoria);
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -78,8 +85,14 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(receitaCategoria).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                using(var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    db.Entry(receitaCategoria).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    scope.Complete();
+                }
+
                 return RedirectToAction("Index");
             }
             return View(receitaCategoria);
@@ -105,9 +118,15 @@ namespace Finance.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            ReceitaCategoria receitaCategoria = await db.ReceitaCategorias.FindAsync(id);
-            db.ReceitaCategorias.Remove(receitaCategoria);
-            await db.SaveChangesAsync();
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                ReceitaCategoria receitaCategoria = await db.ReceitaCategorias.FindAsync(id);
+                db.ReceitaCategorias.Remove(receitaCategoria);
+                await db.SaveChangesAsync();
+
+                scope.Complete();
+            }
+
             return RedirectToAction("Index");
         }
 
