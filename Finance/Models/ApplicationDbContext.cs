@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using Finance.Attributes;
 using Finance.Interfaces;
@@ -36,8 +37,23 @@ namespace Finance.Models
         public DbSet<Banco> Bancos { get; set; }
         public DbSet<ReceitaCategoria> ReceitaCategorias { get; set; }
         public DbSet<DespesaCategoria> DespesaCategorias { get; set; }
+        public DbSet<Transferencia> Transferencias { get; set; }
+
+        public DbSet<BancoAuditoria> BancoAuditoria { get; set; }
+
+        public override Task<int> SaveChangesAsync()
+        {
+            Auditoria();
+            return base.SaveChangesAsync();
+        }
 
         public override int SaveChanges()
+        {
+            Auditoria();
+            return base.SaveChanges();
+        }
+
+        private void Auditoria()
         {
             try
             {
@@ -72,10 +88,26 @@ namespace Finance.Models
                         {
                             entry.Property("UsuarioModificacao").CurrentValue = HttpContext.Current != null ? HttpContext.Current.User.Identity.Name : "Usuario";
                         }
+
+                        foreach (var entidade in ChangeTracker.Entries())
+                        {
+                            var tipoTabelaAuditoria = entidade.Entity.GetType().GetInterfaces()[0].GenericTypeArguments[0];
+                            var registroTabelaAuditoria = Activator.CreateInstance(tipoTabelaAuditoria);
+
+                            foreach (var propriedade in entidade.Entity.GetType().GetProperties())
+                            {
+                                if (propriedade.Name == "UsuarioModificacao" || propriedade.Name == "UltimaModificacao")
+                                    continue;
+
+                                registroTabelaAuditoria.GetType()
+                                                       .GetProperty(propriedade.Name)
+                                                       .SetValue(registroTabelaAuditoria, entidade.Entity.GetType().GetProperty(propriedade.Name).GetValue(entidade.Entity, null));
+                            }
+
+                            this.Set(registroTabelaAuditoria.GetType()).Add(registroTabelaAuditoria);
+                        }
                     }
                 }
-
-                return base.SaveChanges();
             }
             catch (DbEntityValidationException ex)
             {

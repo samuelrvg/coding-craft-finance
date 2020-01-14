@@ -16,7 +16,7 @@
         protected override void Seed(Finance.Models.ApplicationDbContext context)
         {
             //context.DespesaCategorias.AddOrUpdate(
-            //    new Models.DespesaCategoria() { Nome = "Alimentação"},
+            //    new Models.DespesaCategoria() { Nome = "Alimentação" },
             //    new Models.DespesaCategoria() { Nome = "Casa" }
             //    );
 

@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using Finance.Models;
 using System.Transactions;
+using System.Linq;
 
 namespace Finance.Controllers
 {
@@ -12,9 +13,14 @@ namespace Finance.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: DespesaCategorias
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string nome)
         {
-            return View(await db.DespesaCategorias.ToListAsync());
+            var despesaCategorias = db.DespesaCategorias.AsQueryable();
+
+            if (!string.IsNullOrEmpty(nome))
+                despesaCategorias = despesaCategorias.Where(e => e.Nome.Contains(nome));
+
+            return View(await despesaCategorias.ToListAsync());
         }
 
         // GET: DespesaCategorias/Details/5
@@ -24,7 +30,9 @@ namespace Finance.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             DespesaCategoria despesaCategoria = await db.DespesaCategorias.FindAsync(id);
+
             if (despesaCategoria == null)
             {
                 return HttpNotFound();
@@ -68,7 +76,9 @@ namespace Finance.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             DespesaCategoria despesaCategoria = await db.DespesaCategorias.FindAsync(id);
+
             if (despesaCategoria == null)
             {
                 return HttpNotFound();
@@ -105,7 +115,9 @@ namespace Finance.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             DespesaCategoria despesaCategoria = await db.DespesaCategorias.FindAsync(id);
+
             if (despesaCategoria == null)
             {
                 return HttpNotFound();

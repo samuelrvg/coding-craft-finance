@@ -9,6 +9,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@Html.Partial("_PesquisaPartial", new Finance.ViewModels.PesquisaViewModel());
+
 <table class="table">
     <tr>
         <th>
@@ -26,26 +29,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Banco.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReceitaCategoria.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Valor)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReceitaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ReceitaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ReceitaId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Banco.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceitaCategoria.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReceitaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReceitaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReceitaId })
+            </td>
+        </tr>
+    }
 
 </table>

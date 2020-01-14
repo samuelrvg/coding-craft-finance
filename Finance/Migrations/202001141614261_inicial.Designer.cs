@@ -7,18 +7,18 @@ namespace Finance.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class seed : IMigrationMetadata
+    public sealed partial class inicial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(seed));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inicial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001120339152_seed"; }
+            get { return "202001141614261_inicial"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

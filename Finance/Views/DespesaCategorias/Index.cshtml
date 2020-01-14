@@ -9,6 +9,20 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.Label("Nome", new { @class = "control-label col-md-1" })
+        <div class="col-md-2">
+            @Html.TextBox("nome")
+        </div>
+        <div>
+            @Html.Button("Buscar", new { @class = "class=btn btn-primary" })
+        </div>
+    </div>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -17,17 +31,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DespesaCategoriaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DespesaCategoriaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DespesaCategoriaId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DespesaCategoriaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DespesaCategoriaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DespesaCategoriaId })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -4,6 +4,8 @@ using System.Net;
 using System.Web.Mvc;
 using Finance.Models;
 using System.Transactions;
+using System.Linq;
+using Finance.ViewModels;
 
 namespace Finance.Controllers
 {
@@ -12,9 +14,15 @@ namespace Finance.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Despesas
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(PesquisaViewModel pesquisaViewModel)
         {
             var despesas = db.Despesas.Include(d => d.DespesaCategoria);
+
+            if (!string.IsNullOrEmpty(pesquisaViewModel.Nome))
+                despesas = despesas.Where(e => e.DespesaCategoria.Nome.Contains(pesquisaViewModel.Nome));
+            if (!string.IsNullOrEmpty(pesquisaViewModel.Descricao))
+                despesas = despesas.Where(e => e.Descricao.Contains(pesquisaViewModel.Descricao));
+
             return View(await despesas.ToListAsync());
         }
 
@@ -25,7 +33,13 @@ namespace Finance.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Despesa despesa = await db.Despesas.FindAsync(id);
+
+            //Despesa despesa = await db.Despesas
+            //    //.Include(e => e.DespesaCategoria)
+            //    .FirstOrDefaultAsync(e => e.DespesaId == id);
+
             if (despesa == null)
             {
                 return HttpNotFound();
@@ -71,7 +85,9 @@ namespace Finance.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Despesa despesa = await db.Despesas.FindAsync(id);
+
             if (despesa == null)
             {
                 return HttpNotFound();

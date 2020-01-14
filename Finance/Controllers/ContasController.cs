@@ -4,6 +4,8 @@ using System.Net;
 using System.Web.Mvc;
 using Finance.Models;
 using System.Transactions;
+using System.Linq;
+using Finance.ViewModels;
 
 namespace Finance.Controllers
 {
@@ -12,9 +14,23 @@ namespace Finance.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Contas
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(PesquisaViewModel pesquisaViewModel)
         {
-            var contas = db.Contas.Include(c => c.Banco).Include(c => c.Usuario);
+            var contas = db.Contas
+                    .Include(c => c.Banco)
+                    .Include(c => c.Usuario);
+
+            if (!string.IsNullOrEmpty(pesquisaViewModel.Nome))
+                contas = contas.Where(e => e.Nome.Contains(pesquisaViewModel.Nome));
+            if (!string.IsNullOrEmpty(pesquisaViewModel.Descricao))
+                contas = contas.Where(e => e.Descricao.Contains(pesquisaViewModel.Descricao));
+
+            //    .Include(c => c.Usuario);
+            //    .Include(c => c.TransferenciasComoDestino)
+            //    .Include(c => c.TransferenciasComoOrigem);
+
+            //var contas = db.Contas;
+
             return View(await contas.ToListAsync());
         }
 

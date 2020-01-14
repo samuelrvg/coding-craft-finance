@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using Finance.Models;
 using System.Transactions;
+using System.Linq;
 
 namespace Finance.Controllers
 {
@@ -12,9 +13,14 @@ namespace Finance.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Bancos
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string nome)
         {
-            return View(await db.Bancos.ToListAsync());
+            var bancos = db.Bancos.AsQueryable();
+
+            if (!string.IsNullOrEmpty(nome))
+                bancos = bancos.Where(e => e.Nome.Contains(nome));
+
+            return View(await bancos.ToListAsync());
         }
 
         // GET: Bancos/Details/5
