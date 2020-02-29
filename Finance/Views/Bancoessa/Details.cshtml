@@ -1,0 +1,66 @@
+﻿@model Finance.Models.Banco
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Banco</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UltimaModificacao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UltimaModificacao)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UsuarioModificacao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UsuarioModificacao)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataCriacao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataCriacao)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UsuarioCriacao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UsuarioCriacao)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.BancoId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
