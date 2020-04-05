@@ -42,11 +42,11 @@ foreach (ModelProperty property in GetModelProperties(Model.ViewDataType, true))
 </fieldset>
 <p>
 <# if (!String.IsNullOrEmpty(Model.PrimaryKeyName)) { #>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.<#= Model.PrimaryKeyName #> }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id=Model.<#= Model.PrimaryKeyName #> }) |
+    @Html.ActionLink("Voltar para listagem", "Indice")
 <# } else { #>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Editar", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Voltar para listagem", "Index")
 <# } #>
 </p>
 

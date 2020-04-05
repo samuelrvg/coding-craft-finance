@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Finance.Models.Transferencia>
+
+@{
+    ViewBag.Title = "Indice";
+}
+
+<h2>Indice</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Criar")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Valor
+        </th>
+        <th>
+            ContaOrigem
+        </th>
+        <th>
+            ContaDestino
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TransferenciaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TransferenciaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TransferenciaId })
+        </td>
+        <td>
+			@String.Format("{0:F}", item.Valor)
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.ContaOrigem).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.ContaDestino).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

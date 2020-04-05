@@ -1,0 +1,26 @@
+﻿@model Finance.Models.Transferencia
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<fieldset>
+    <legend>Transferencia</legend>
+
+    <div class="display-label">Valor</div>
+    <div class="display-field">@String.Format("{0:F}", Model.Valor)</div>
+
+    <div class="display-label">ContaOrigem</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ContaOrigem).ToString()</div>
+
+    <div class="display-label">ContaDestino</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ContaDestino).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.TransferenciaId }) |
+    @Html.ActionLink("Voltar para listagem", "Indice")
+</p>
+
+

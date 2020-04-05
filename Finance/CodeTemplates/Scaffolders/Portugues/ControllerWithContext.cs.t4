@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 <# if(!string.IsNullOrEmpty(Model.ModelTypeNamespace)) { #>
@@ -39,7 +40,7 @@ namespace <#= Model.ControllerNamespace #>
         //
         // GET: /<#= routingName #>/
 
-        public ViewResult Indice()
+        public async Task<ActionResult> Indice()
         {
 <#
     var propertiesToInclude = relatedEntities.Select(relation => relation.LazyLoadingProperty).Where(x => x != null);
@@ -47,25 +48,25 @@ namespace <#= Model.ControllerNamespace #>
         ? String.Join("", propertiesToInclude.Select(x => String.Format(".Include(\"{0}\")", x.Name)))
         : String.Join("", propertiesToInclude.Select(x => String.Format(".Include({0} => {0}.{1})", modelVariable, x.Name)));
 #>
-            return View(context.<#= modelNamePlural #><#= includeExpressions #>.ToList());
+            return View(await context.<#= modelNamePlural #><#= includeExpressions #>.ToListAsync());
         }
 
         //
         // GET: /<#= routingName #>/Detalhes/5
 
-        public ViewResult Detalhes(<#= primaryKeyProperty.Type.AsString #> id)
+        public async Task<ActionResult> Detalhes(<#= primaryKeyProperty.Type.AsString #> id)
         {
-            <#= modelName #> <#= modelVariable #> = context.<#= modelNamePlural #>.Single(x => x.<#= primaryKeyProperty.Name #> == id);
+            <#= modelName #> <#= modelVariable #> = await context.<#= modelNamePlural #>.SingleAsync(x => x.<#= primaryKeyProperty.Name #> == id);
             return View(<#= modelVariable #>);
         }
 
         //
         // GET: /<#= routingName #>/Criar
 
-        public ActionResult Criar()
+        public async Task<ActionResult> Criar()
         {
 <# foreach(var relatedEntity in relatedEntities.Where(x => x.RelationType == RelationType.Parent)) { #>
-            ViewBag.Possible<#= relatedEntity.RelationNamePlural #> = context.<#= relatedEntity.RelatedEntityTypeNamePlural #>;
+            ViewBag.Possible<#= relatedEntity.RelationNamePlural #> = await context.<#= relatedEntity.RelatedEntityTypeNamePlural #>.ToListAsync();
 <# } #>
             return View();
         } 
@@ -74,7 +75,7 @@ namespace <#= Model.ControllerNamespace #>
         // POST: /<#= routingName #>/Criar
 
         [HttpPost]
-        public ActionResult Criar(<#= modelName #> <#= modelVariable #>)
+        public async Task<ActionResult> Criar(<#= modelName #> <#= modelVariable #>)
         {
             if (ModelState.IsValid)
             {
@@ -86,8 +87,8 @@ namespace <#= Model.ControllerNamespace #>
 <# } else { #>
                 context.<#= modelNamePlural #>.Add(<#= modelVariable #>);
 <# } #>
-                context.SaveChanges();
-                return RedirectToAction("Indice");  
+                await context.SaveChangesAsync();
+                return RedirectToAction(nameof(Indice));  
             }
 
 <# foreach(var relatedEntity in relatedEntities.Where(x => x.RelationType == RelationType.Parent)) { #>
@@ -99,11 +100,11 @@ namespace <#= Model.ControllerNamespace #>
         //
         // GET: /<#= routingName #>/Editar/5
  
-        public ActionResult Editar(<#= primaryKeyProperty.Type.AsString #> id)
+        public async Task<ActionResult> Editar(<#= primaryKeyProperty.Type.AsString #> id)
         {
-            <#= modelName #> <#= modelVariable #> = context.<#= modelNamePlural #>.Single(x => x.<#= primaryKeyProperty.Name #> == id);
+            <#= modelName #> <#= modelVariable #> = await context.<#= modelNamePlural #>.SingleAsync(x => x.<#= primaryKeyProperty.Name #> == id);
 <# foreach(var relatedEntity in relatedEntities.Where(x => x.RelationType == RelationType.Parent)) { #>
-            ViewBag.Possible<#= relatedEntity.RelationNamePlural #> = context.<#= relatedEntity.RelatedEntityTypeNamePlural #>;
+            ViewBag.Possible<#= relatedEntity.RelationNamePlural #> = await context.<#= relatedEntity.RelatedEntityTypeNamePlural #>.ToListAsync();
 <# } #>
             return View(<#= modelVariable #>);
         }
@@ -112,7 +113,7 @@ namespace <#= Model.ControllerNamespace #>
         // POST: /<#= routingName #>/Editar/5
 
         [HttpPost]
-        public ActionResult Editar(<#= modelName #> <#= modelVariable #>)
+        public async Task<ActionResult> Editar(<#= modelName #> <#= modelVariable #>)
         {
             if (ModelState.IsValid)
             {
@@ -122,11 +123,11 @@ namespace <#= Model.ControllerNamespace #>
 <# } else { #>
                 context.Entry(<#= modelVariable #>).State = EntityState.Modified;
 <# } #>
-                context.SaveChanges();
-                return RedirectToAction("Indice");
+                await context.SaveChangesAsync();
+                return RedirectToAction(nameof(Indice));
             }
 <# foreach(var relatedEntity in relatedEntities.Where(x => x.RelationType == RelationType.Parent)) { #>
-            ViewBag.Possible<#= relatedEntity.RelationNamePlural #> = context.<#= relatedEntity.RelatedEntityTypeNamePlural #>;
+            ViewBag.Possible<#= relatedEntity.RelationNamePlural #> = await context.<#= relatedEntity.RelatedEntityTypeNamePlural #>.ToListAsync();
 <# } #>
             return View(<#= modelVariable #>);
         }
@@ -134,26 +135,26 @@ namespace <#= Model.ControllerNamespace #>
         //
         // GET: /<#= routingName #>/Excluir/5
  
-        public ActionResult Excluir(<#= primaryKeyProperty.Type.AsString #> id)
+        public async Task<ActionResult> Excluir(<#= primaryKeyProperty.Type.AsString #> id)
         {
-            <#= modelName #> <#= modelVariable #> = context.<#= modelNamePlural #>.Single(x => x.<#= primaryKeyProperty.Name #> == id);
+            <#= modelName #> <#= modelVariable #> = await context.<#= modelNamePlural #>.SingleAsync(x => x.<#= primaryKeyProperty.Name #> == id);
             return View(<#= modelVariable #>);
         }
 
         //
-        // POST: /<#= routingName #>/Delete/5
+        // POST: /<#= routingName #>/Excluir/5
 
-        [HttpPost, ActionName("Excluir")]
-        public ActionResult ConfirmaExcluir(<#= primaryKeyProperty.Type.AsString #> id)
+        [HttpPost, ActionName(nameof(Excluir))]
+        public async Task<ActionResult> ConfirmarExclusao(<#= primaryKeyProperty.Type.AsString #> id)
         {
-            <#= modelName #> <#= modelVariable #> = context.<#= modelNamePlural #>.Single(x => x.<#= primaryKeyProperty.Name #> == id);
+            <#= modelName #> <#= modelVariable #> = await context.<#= modelNamePlural #>.SingleAsync(x => x.<#= primaryKeyProperty.Name #> == id);
 <# if(isObjectContext) { #>
             context.<#= modelNamePlural #>.DeleteObject(<#= modelVariable #>);
 <# } else { #>
             context.<#= modelNamePlural #>.Remove(<#= modelVariable #>);
 <# } #>
-            context.SaveChanges();
-            return RedirectToAction("Indice");
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Indice));
         }
 
         protected override void Dispose(bool disposing)

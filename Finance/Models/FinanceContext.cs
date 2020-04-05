@@ -38,7 +38,6 @@ namespace Finance.Models
         public DbSet<ReceitaCategoria> ReceitaCategorias { get; set; }
         public DbSet<DespesaCategoria> DespesaCategorias { get; set; }
         public DbSet<Transferencia> Transferencias { get; set; }
-
         public DbSet<BancoAuditoria> BancoAuditoria { get; set; }
 
         public override Task<int> SaveChangesAsync()

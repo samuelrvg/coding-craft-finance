@@ -27,7 +27,7 @@
 <h2><#= Model.ViewName #></h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar Novo", "Criar")
 </p>
 <table>
     <tr>

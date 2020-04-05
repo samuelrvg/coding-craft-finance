@@ -193,7 +193,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReceitaCategoriasController.cs" />
     <Compile Include="Controllers\ReceitasController.cs" />
-    <Compile Include="Controllers\TransferenciasController.cs" />
+    <Compile Include="Controllers\TranferenciasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -324,11 +324,6 @@
     <Content Include="Views\DespesaCategorias\Edit.cshtml" />
     <Content Include="Views\DespesaCategorias\Index.cshtml" />
     <Content Include="Views\Shared\_PesquisaPartial.cshtml" />
-    <Content Include="Views\Transferencias\Create.cshtml" />
-    <Content Include="Views\Transferencias\Delete.cshtml" />
-    <Content Include="Views\Transferencias\Details.cshtml" />
-    <Content Include="Views\Transferencias\Edit.cshtml" />
-    <Content Include="Views\Transferencias\Index.cshtml" />
     <Content Include="Views\Bancos\Create.cshtml" />
     <Content Include="Views\Bancos\Delete.cshtml" />
     <Content Include="Views\Bancos\Details.cshtml" />
@@ -339,6 +334,12 @@
     <Content Include="Views\Contas\Details.cshtml" />
     <Content Include="Views\Contas\Edit.cshtml" />
     <Content Include="Views\Contas\Index.cshtml" />
+    <Content Include="Views\Tranferencias\Criar.cshtml" />
+    <Content Include="Views\Tranferencias\Editar.cshtml" />
+    <Content Include="Views\Tranferencias\Excluir.cshtml" />
+    <Content Include="Views\Tranferencias\Detalhes.cshtml" />
+    <Content Include="Views\Tranferencias\Indice.cshtml" />
+    <Content Include="Views\Tranferencias\_CriarOuEditar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
