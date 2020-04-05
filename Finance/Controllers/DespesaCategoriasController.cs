@@ -10,7 +10,7 @@ namespace Finance.Controllers
 {
     public class DespesaCategoriasController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private FinanceContext db = new FinanceContext();
 
         // GET: DespesaCategorias
         public async Task<ActionResult> Index(string nome)

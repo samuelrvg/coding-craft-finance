@@ -11,7 +11,7 @@ namespace Finance.Controllers
 {
     public class DespesasController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private FinanceContext db = new FinanceContext();
 
         // GET: Despesas
         public async Task<ActionResult> Index(PesquisaViewModel pesquisaViewModel)

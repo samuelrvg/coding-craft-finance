@@ -10,7 +10,7 @@ namespace Finance.Controllers
 {
     public class TransferenciasController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private FinanceContext db = new FinanceContext();
 
         // GET: Transferencias
         public async Task<ActionResult> Index(string nome)

@@ -11,16 +11,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Finance.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<Usuario>
+    public class FinanceContext : IdentityDbContext<Usuario>
     {
-        public ApplicationDbContext()
+        public FinanceContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static FinanceContext Create()
         {
-            return new ApplicationDbContext();
+            return new FinanceContext();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
