@@ -1,20 +1,41 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.902
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance", "Finance\Finance.csproj", "{BC919133-A0F8-4482-9A58-F2F11366693B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		TEMPLATES|Any CPU = TEMPLATES|Any CPU
+		TEMPLATES|x64 = TEMPLATES|x64
+		TEMPLATES|x86 = TEMPLATES|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BC919133-A0F8-4482-9A58-F2F11366693B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC919133-A0F8-4482-9A58-F2F11366693B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.Debug|x64.ActiveCfg = Debug|x64
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.Debug|x64.Build.0 = Debug|x64
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.Debug|x86.ActiveCfg = Debug|x86
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.Debug|x86.Build.0 = Debug|x86
 		{BC919133-A0F8-4482-9A58-F2F11366693B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC919133-A0F8-4482-9A58-F2F11366693B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.Release|x64.ActiveCfg = Release|x64
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.Release|x64.Build.0 = Release|x64
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.Release|x86.ActiveCfg = Release|x86
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.Release|x86.Build.0 = Release|x86
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.TEMPLATES|Any CPU.ActiveCfg = TEMPLATES|Any CPU
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.TEMPLATES|Any CPU.Build.0 = TEMPLATES|Any CPU
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.TEMPLATES|x64.ActiveCfg = TEMPLATES|Any CPU
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.TEMPLATES|x64.Build.0 = TEMPLATES|Any CPU
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.TEMPLATES|x86.ActiveCfg = TEMPLATES|x64
+		{BC919133-A0F8-4482-9A58-F2F11366693B}.TEMPLATES|x86.Build.0 = TEMPLATES|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

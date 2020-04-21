@@ -219,16 +219,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CommandsScaffolder.txt" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\Site.css" />
+    <Content Include="Content\foundation\foundation.css" />
+    <Content Include="Content\foundation\foundation.mvc.css" />
+    <Content Include="Content\foundation\normalize.css" />
+    <Content Include="Content\ink\font-awesome.css" />
+    <Content Include="Content\ink\font-awesome.min.css" />
+    <Content Include="Content\ink\ink-flex.css" />
+    <Content Include="Content\ink\ink-flex.min.css" />
+    <Content Include="Content\ink\ink-ie.css" />
+    <Content Include="Content\ink\ink-ie.min.css" />
+    <Content Include="Content\ink\ink-legacy.css" />
+    <Content Include="Content\ink\ink-legacy.min.css" />
+    <Content Include="Content\ink\ink.css" />
+    <Content Include="Content\ink\ink.min.css" />
+    <Content Include="Content\ink\quick-start.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="CodeTemplates\MvcControllerWithContext\Controller.cs.t4" />
     <Content Include="CodeTemplates\MvcView\Create.cs.t4" />
     <Content Include="CodeTemplates\MvcView\Delete.cs.t4" />
@@ -256,17 +270,89 @@
     <Content Include="CodeTemplates\Scaffolders\MvcScaffolding.RazorView\_CreateOrEdit.cs.t4" />
     <Content Include="CodeTemplates\Scaffolders\Portugues\PortuguesController.ps1" />
     <Content Include="CodeTemplates\Scaffolders\Portugues\ControllerWithContext.cs.t4" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="App_Readme\Foundation for sites\readme.md" />
+    <Content Include="Scripts\ink\autoload.min.js.map" />
+    <Content Include="Scripts\ink\ink-all.min.js.map" />
+    <Content Include="Scripts\ink\ink-ui.min.js.map" />
+    <Content Include="Scripts\ink\ink.min.js.map" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.min.css.map" />
+    <None Include="Scripts\bootstrap\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\foundation\fastclick.js" />
+    <Content Include="Scripts\foundation\foundation.abide.js" />
+    <Content Include="Scripts\foundation\foundation.accordion.js" />
+    <Content Include="Scripts\foundation\foundation.alert.js" />
+    <Content Include="Scripts\foundation\foundation.clearing.js" />
+    <Content Include="Scripts\foundation\foundation.dropdown.js" />
+    <Content Include="Scripts\foundation\foundation.equalizer.js" />
+    <Content Include="Scripts\foundation\foundation.interchange.js" />
+    <Content Include="Scripts\foundation\foundation.joyride.js" />
+    <Content Include="Scripts\foundation\foundation.js" />
+    <Content Include="Scripts\foundation\foundation.magellan.js" />
+    <Content Include="Scripts\foundation\foundation.offcanvas.js" />
+    <Content Include="Scripts\foundation\foundation.orbit.js" />
+    <Content Include="Scripts\foundation\foundation.reveal.js" />
+    <Content Include="Scripts\foundation\foundation.slider.js" />
+    <Content Include="Scripts\foundation\foundation.tab.js" />
+    <Content Include="Scripts\foundation\foundation.tooltip.js" />
+    <Content Include="Scripts\foundation\foundation.topbar.js" />
+    <Content Include="Scripts\foundation\jquery.cookie.js" />
+    <Content Include="Scripts\ink\autoload.js" />
+    <Content Include="Scripts\ink\autoload.min.js" />
+    <Content Include="Scripts\ink\holder.js" />
+    <Content Include="Scripts\ink\html5shiv-printshiv.js" />
+    <Content Include="Scripts\ink\html5shiv.js" />
+    <Content Include="Scripts\ink\ink-all.js" />
+    <Content Include="Scripts\ink\ink-all.min.js" />
+    <Content Include="Scripts\ink\ink-ui.js" />
+    <Content Include="Scripts\ink\ink-ui.min.js" />
+    <Content Include="Scripts\ink\ink.animate.js" />
+    <Content Include="Scripts\ink\ink.carousel.js" />
+    <Content Include="Scripts\ink\ink.close.js" />
+    <Content Include="Scripts\ink\ink.common.js" />
+    <Content Include="Scripts\ink\ink.datepicker.js" />
+    <Content Include="Scripts\ink\ink.dragdrop.js" />
+    <Content Include="Scripts\ink\ink.draggable.js" />
+    <Content Include="Scripts\ink\ink.drawer.js" />
+    <Content Include="Scripts\ink\ink.dropdown.js" />
+    <Content Include="Scripts\ink\ink.droppable.js" />
+    <Content Include="Scripts\ink\ink.formvalidator-2.js" />
+    <Content Include="Scripts\ink\ink.formvalidator.js" />
+    <Content Include="Scripts\ink\ink.imagequery.js" />
+    <Content Include="Scripts\ink\ink.js" />
+    <Content Include="Scripts\ink\ink.lazyload.js" />
+    <Content Include="Scripts\ink\ink.min.js" />
+    <Content Include="Scripts\ink\ink.modal.js" />
+    <Content Include="Scripts\ink\ink.pagination.js" />
+    <Content Include="Scripts\ink\ink.progressbar.js" />
+    <Content Include="Scripts\ink\ink.smoothscroller.js" />
+    <Content Include="Scripts\ink\ink.sortablelist.js" />
+    <Content Include="Scripts\ink\ink.spy.js" />
+    <Content Include="Scripts\ink\ink.stacker.js" />
+    <Content Include="Scripts\ink\ink.sticky.js" />
+    <Content Include="Scripts\ink\ink.swipe.js" />
+    <Content Include="Scripts\ink\ink.table.js" />
+    <Content Include="Scripts\ink\ink.tabs.js" />
+    <Content Include="Scripts\ink\ink.tagfield.js" />
+    <Content Include="Scripts\ink\ink.toggle.js" />
+    <Content Include="Scripts\ink\ink.tooltip.js" />
+    <Content Include="Scripts\ink\ink.treeview.js" />
+    <Content Include="Scripts\ink\ink.upload.js" />
+    <Content Include="Scripts\ink\modernizr-all.js" />
+    <Content Include="Scripts\ink\modernizr.js" />
+    <Content Include="Scripts\ink\prettify.js" />
+    <Content Include="Scripts\bootstrap\jquery-3.4.1.js" />
+    <Content Include="Scripts\bootstrap\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\bootstrap\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\bootstrap\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\bootstrap\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\bootstrap\jquery.validate.js" />
+    <Content Include="Scripts\bootstrap\jquery.validate.min.js" />
+    <Content Include="Scripts\bootstrap\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\bootstrap\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\bootstrap\modernizr-2.8.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -340,6 +426,8 @@
     <Content Include="Views\Tranferencias\Detalhes.cshtml" />
     <Content Include="Views\Tranferencias\Indice.cshtml" />
     <Content Include="Views\Tranferencias\_CriarOuEditar.cshtml" />
+    <Content Include="Views\Shared\_LayoutFoundation.cshtml" />
+    <Content Include="Views\Shared\_LayoutInk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -349,19 +437,117 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\bootstrap\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\bootstrap\jquery-3.4.1.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FoundationAndInkTemplate|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TEMPLATES|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FoundationAndInkTemplate|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TEMPLATES|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FoundationAndInkTemplate|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TEMPLATES|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
