@@ -193,7 +193,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReceitaCategoriasController.cs" />
     <Compile Include="Controllers\ReceitasController.cs" />
-    <Compile Include="Controllers\TranferenciasController.cs" />
+    <Compile Include="Controllers\TransferenciasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -279,6 +279,24 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\bootstrap\bootstrap.min.css.map" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\FoundationController.ps1" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\FoundationViews.ps1" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\InkController.ps1" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\InkViews.ps1" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\_CriarOuEditar.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\ControllerWithContext.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\Criar.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\Detalhes.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\Editar.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\Excluir.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Ink\Indice.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\_CriarOuEditar.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\ControllerWithContext.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\Criar.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\Detalhes.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\Editar.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\Excluir.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\Foundation\Indice.cs.t4" />
     <None Include="Scripts\bootstrap\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\foundation\fastclick.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />
@@ -420,14 +438,14 @@
     <Content Include="Views\Contas\Details.cshtml" />
     <Content Include="Views\Contas\Edit.cshtml" />
     <Content Include="Views\Contas\Index.cshtml" />
-    <Content Include="Views\Tranferencias\Criar.cshtml" />
-    <Content Include="Views\Tranferencias\Editar.cshtml" />
-    <Content Include="Views\Tranferencias\Excluir.cshtml" />
-    <Content Include="Views\Tranferencias\Detalhes.cshtml" />
-    <Content Include="Views\Tranferencias\Indice.cshtml" />
-    <Content Include="Views\Tranferencias\_CriarOuEditar.cshtml" />
     <Content Include="Views\Shared\_LayoutFoundation.cshtml" />
     <Content Include="Views\Shared\_LayoutInk.cshtml" />
+    <Content Include="Views\Transferencias\Criar.cshtml" />
+    <Content Include="Views\Transferencias\Editar.cshtml" />
+    <Content Include="Views\Transferencias\Excluir.cshtml" />
+    <Content Include="Views\Transferencias\Detalhes.cshtml" />
+    <Content Include="Views\Transferencias\Indice.cshtml" />
+    <Content Include="Views\Transferencias\_CriarOuEditar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

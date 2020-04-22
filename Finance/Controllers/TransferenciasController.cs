@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Finance.Models;
 
 namespace Finance.Controllers
-{   
-    public class TranferenciasController : Controller
+{
+    public class TransferenciasController : Controller
     {
         private FinanceContext context = new FinanceContext();
 
         //
-        // GET: /Tranferencias/
+        // GET: /Transferencia/
 
         public async Task<ActionResult> Indice()
         {
@@ -23,7 +18,7 @@ namespace Finance.Controllers
         }
 
         //
-        // GET: /Tranferencias/Detalhes/5
+        // GET: /Transferencia/Detalhes/5
 
         public async Task<ActionResult> Detalhes(int id)
         {
@@ -32,7 +27,7 @@ namespace Finance.Controllers
         }
 
         //
-        // GET: /Tranferencias/Criar
+        // GET: /Transferencia/Criar
 
         public async Task<ActionResult> Criar()
         {
@@ -42,7 +37,7 @@ namespace Finance.Controllers
         } 
 
         //
-        // POST: /Tranferencias/Criar
+        // POST: /Transferencia/Criar
 
         [HttpPost]
         public async Task<ActionResult> Criar(Transferencia transferencia)
@@ -60,7 +55,7 @@ namespace Finance.Controllers
         }
         
         //
-        // GET: /Tranferencias/Editar/5
+        // GET: /Transferencia/Editar/5
  
         public async Task<ActionResult> Editar(int id)
         {
@@ -71,7 +66,7 @@ namespace Finance.Controllers
         }
 
         //
-        // POST: /Tranferencias/Editar/5
+        // POST: /Transferencia/Editar/5
 
         [HttpPost]
         public async Task<ActionResult> Editar(Transferencia transferencia)
@@ -88,7 +83,7 @@ namespace Finance.Controllers
         }
 
         //
-        // GET: /Tranferencias/Excluir/5
+        // GET: /Transferencia/Excluir/5
  
         public async Task<ActionResult> Excluir(int id)
         {
@@ -97,7 +92,7 @@ namespace Finance.Controllers
         }
 
         //
-        // POST: /Tranferencias/Excluir/5
+        // POST: /Transferencia/Excluir/5
 
         [HttpPost, ActionName(nameof(Excluir))]
         public async Task<ActionResult> ConfirmarExclusao(int id)

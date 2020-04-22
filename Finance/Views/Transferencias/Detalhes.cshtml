@@ -1,12 +1,11 @@
 ﻿@model Finance.Models.Transferencia
 
 @{
-    ViewBag.Title = "Excluir";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Excluir</h2>
+<h2>Detalhes</h2>
 
-<h3>Tem certeza que deseja excluir?</h3>
 <fieldset>
     <legend>Transferencia</legend>
 
@@ -19,11 +18,9 @@
     <div class="display-label">ContaDestino</div>
     <div class="display-field">@Html.DisplayTextFor(_ => Model.ContaDestino).ToString()</div>
 </fieldset>
-@using (Html.BeginForm()) {
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Voltar para listagem", "Indice")
-    </p>
-}
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id=Model.TransferenciaId }) |
+    @Html.ActionLink("Voltar para listagem", "Indice")
+</p>
 
 
