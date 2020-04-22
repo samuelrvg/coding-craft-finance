@@ -1,0 +1,22 @@
+﻿@model Finance.Models.Despesa
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3>Editar Despesa</h3>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.DespesaId)
+		@Html.Partial("_CriarOuEditar", Model)
+
+        <p>
+            <input class="tiny success button" type="submit" value="Salvar" />
+        </p>
+}
+
+<div>
+    @Html.ActionLink("Voltar para listagem", "Indice")
+</div>

@@ -46,7 +46,7 @@ foreach (RelatedEntityInfo relation in ParentRelations) {
         Text = <#= GetValueExpression("option", relation.RelatedEntityType) #>, 
         Value = option.<#= relation.RelatedEntityPrimaryKeyName #>.ToString(),
         Selected = (Model != null) && (option.<#= relation.RelatedEntityPrimaryKeyName #> == Model.<#= relation.RelationProperty.Name #>)
-    }), "Choose...")
+    }), "Selecione um item...")
     @Html.ValidationMessageFor(model => model.<#= relation.RelationProperty.Name #>)
 </div>
 <#

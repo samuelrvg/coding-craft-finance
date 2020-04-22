@@ -24,10 +24,8 @@
 <# } #>
 }
 
-<h2><#= Model.ViewName #></h2>
+<h3><#= Model.ViewName #> <#= Model.ViewDataTypeName ?? String.Empty #></h3>
 
-<fieldset>
-    <legend><#= Model.ViewDataTypeName ?? String.Empty #></legend>
 <#
 foreach (ModelProperty property in GetModelProperties(Model.ViewDataType, true)) {
     if (!property.IsPrimaryKey && !property.IsForeignKey) {
@@ -39,13 +37,12 @@ foreach (ModelProperty property in GetModelProperties(Model.ViewDataType, true))
     }
 }
 #>
-</fieldset>
 <p>
 <# if (!String.IsNullOrEmpty(Model.PrimaryKeyName)) { #>
-    @Html.ActionLink("Editar", "Editar", new { id=Model.<#= Model.PrimaryKeyName #> }) |
+    @Html.ActionLink("Editar", "Editar", new { id=Model.<#= Model.PrimaryKeyName #> }, new { @class = "button tiny primary" })
     @Html.ActionLink("Voltar para listagem", "Indice")
 <# } else { #>
-    @Html.ActionLink("Editar", "Editar", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Editar", "Editar", new { /* id=Model.PrimaryKey */ }, new { @class = "button tiny primary" })
     @Html.ActionLink("Voltar para listagem", "Indice")
 <# } #>
 </p>

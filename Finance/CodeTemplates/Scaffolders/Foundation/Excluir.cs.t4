@@ -24,10 +24,10 @@
 <# } #>
 }
 
-<h2><#= Model.ViewName #></h2>
+<h3><#= Model.ViewName #> <#= Model.ViewDataTypeName ?? String.Empty #></h3>
 
 <h3>Tem certeza que deseja excluir?</h3>
-<fieldset>
+
     <legend><#= Model.ViewDataTypeName ?? String.Empty #></legend>
 <#
 foreach (ModelProperty property in GetModelProperties(Model.ViewDataType, true)) {
@@ -40,10 +40,10 @@ foreach (ModelProperty property in GetModelProperties(Model.ViewDataType, true))
     }
 }
 #>
-</fieldset>
+
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Excluirt" /> |
+        <input class="tiny alert button" type="submit" value="Excluir" />
         @Html.ActionLink("Voltar para listagem", "Indice")
     </p>
 }

@@ -1,0 +1,26 @@
+﻿@model Finance.Models.ReceitaCategoria
+
+@{
+    ViewBag.Title = "Excluir";
+}
+
+<h3>Excluir ReceitaCategoria</h3>
+
+<h3>Tem certeza que deseja excluir?</h3>
+
+    <legend>ReceitaCategoria</legend>
+
+    <div class="display-label">Nome</div>
+    <div class="display-field">@Model.Nome</div>
+
+    <div class="display-label">Receitas</div>
+    <div class="display-field">@(Model.Receitas == null ? "None" : Model.Receitas.Count.ToString())</div>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input class="tiny alert button" type="submit" value="Excluir" />
+        @Html.ActionLink("Voltar para listagem", "Indice")
+    </p>
+}
+
+

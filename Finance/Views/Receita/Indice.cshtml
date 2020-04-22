@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Finance.Models.Receita>
+
+@{
+    ViewBag.Title = "Indice";
+}
+
+<h2>Indice</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Criar", new { }, new { @class = "button tiny primary" })
+</p>
+<table>
+    <thead>
+        <tr>
+                <th>
+                Descricao
+            </th>
+                <th>
+                Valor
+            </th>
+                <th>
+                Banco
+            </th>
+                <th>
+                ReceitaCategoria
+            </th>
+                <th></th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+			@item.Descricao
+        </td>
+        <td>
+			@String.Format("{0:F}", item.Valor)
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.Banco.Nome).ToString()
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.ReceitaCategoria.Nome).ToString()
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.ReceitaId }, new { @class = "button tiny primary" })
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.ReceitaId }, new { @class = "button tiny secondary" })
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.ReceitaId }, new { @class = "button tiny alert" })
+        </td>
+    </tr>
+}
+
+</table>
+
+

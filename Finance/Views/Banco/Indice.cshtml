@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Finance.Models.Banco>
+
+@{
+    ViewBag.Title = "Indice";
+}
+
+<h2>Indice</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Criar", new { }, new { @class = "button tiny primary" })
+</p>
+<table>
+    <thead>
+        <tr>
+                <th>
+                Nome
+            </th>
+                <th>
+                Contas
+            </th>
+                <th>
+                UltimaModificacao
+            </th>
+                <th>
+                UsuarioModificacao
+            </th>
+                <th>
+                DataCriacao
+            </th>
+                <th>
+                UsuarioCriacao
+            </th>
+                <th></th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+			@item.Nome
+        </td>
+        <td>
+			@(item.Contas == null ? "None" : item.Contas.Count.ToString())
+        </td>
+        <td>
+			@String.Format("{0:g}", item.UltimaModificacao)
+        </td>
+        <td>
+			@item.UsuarioModificacao
+        </td>
+        <td>
+			@String.Format("{0:g}", item.DataCriacao)
+        </td>
+        <td>
+			@item.UsuarioCriacao
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.BancoId }, new { @class = "button tiny primary" })
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.BancoId }, new { @class = "button tiny secondary" })
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.BancoId }, new { @class = "button tiny alert" })
+        </td>
+    </tr>
+}
+
+</table>
+
+

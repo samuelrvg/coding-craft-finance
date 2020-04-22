@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Finance.Models.DespesaCategoria>
+
+@{
+    ViewBag.Title = "Indice";
+}
+
+<h2>Indice</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Criar", new { }, new { @class = "button tiny primary" })
+</p>
+<table>
+    <thead>
+        <tr>
+                <th>
+                Nome
+            </th>
+                <th>
+                Despesas
+            </th>
+                <th></th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+			@item.Nome
+        </td>
+        <td>
+			@(item.Despesas == null ? "None" : item.Despesas.Count.ToString())
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.DespesaCategoriaId }, new { @class = "button tiny primary" })
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.DespesaCategoriaId }, new { @class = "button tiny secondary" })
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.DespesaCategoriaId }, new { @class = "button tiny alert" })
+        </td>
+    </tr>
+}
+
+</table>
+
+

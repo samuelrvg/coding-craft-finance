@@ -1,0 +1,22 @@
+﻿@model Finance.Models.Transferencia
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h3>Editar Transferencia</h3>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.TransferenciaId)
+		@Html.Partial("_CriarOuEditar", Model)
+
+        <p>
+            <input class="tiny success button" type="submit" value="Salvar" />
+        </p>
+}
+
+<div>
+    @Html.ActionLink("Voltar para listagem", "Indice")
+</div>

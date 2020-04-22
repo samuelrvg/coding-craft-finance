@@ -43,7 +43,7 @@ foreach (ModelProperty property in GetModelProperties(Model.ViewDataType, true))
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Excluirt" /> |
+        <input type="submit" value="Excluir" /> |
         @Html.ActionLink("Voltar para listagem", "Indice")
     </p>
 }

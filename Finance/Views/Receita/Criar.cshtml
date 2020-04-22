@@ -1,0 +1,23 @@
+﻿@model Finance.Models.Receita
+
+@{
+    ViewBag.Title = "Criar";
+}
+
+<h3>Criar Receita</h3>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.Partial("_CriarOuEditar", Model)
+
+    <p>
+        <input class="tiny success button" type="submit" value="Criar" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Voltar para listagem", "Indice")
+</div>
+
+

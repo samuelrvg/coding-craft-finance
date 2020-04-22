@@ -1,0 +1,29 @@
+﻿@model Finance.Models.Transferencia
+
+@{
+    ViewBag.Title = "Excluir";
+}
+
+<h3>Excluir Transferencia</h3>
+
+<h3>Tem certeza que deseja excluir?</h3>
+
+    <legend>Transferencia</legend>
+
+    <div class="display-label">Valor</div>
+    <div class="display-field">@String.Format("{0:F}", Model.Valor)</div>
+
+    <div class="display-label">ContaOrigem</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ContaOrigem.Nome).ToString()</div>
+
+    <div class="display-label">ContaDestino</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.ContaDestino.Nome).ToString()</div>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input class="tiny alert button" type="submit" value="Excluir" />
+        @Html.ActionLink("Voltar para listagem", "Indice")
+    </p>
+}
+
+

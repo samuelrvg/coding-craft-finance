@@ -1,0 +1,42 @@
+﻿@model Finance.Models.Receita
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Descricao)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Descricao)
+    @Html.ValidationMessageFor(model => model.Descricao)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Valor)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Valor)
+    @Html.ValidationMessageFor(model => model.Valor)
+</div>
+
+<div class="editor-label">
+    ReceitaCategoria
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.ReceitaCategoriaId, ((IEnumerable<Finance.Models.ReceitaCategoria>)ViewBag.ReceitaCategoria).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option.Nome).ToString(), 
+        Value = option.ReceitaCategoriaId.ToString(),
+        Selected = (Model != null) && (option.ReceitaCategoriaId == Model.ReceitaCategoriaId)
+    }), "Selecione um item...")
+    @Html.ValidationMessageFor(model => model.ReceitaCategoriaId)
+</div>
+<div class="editor-label">
+    Banco
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.BancoId, ((IEnumerable<Finance.Models.Banco>)ViewBag.Banco).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option.Nome).ToString(), 
+        Value = option.BancoId.ToString(),
+        Selected = (Model != null) && (option.BancoId == Model.BancoId)
+    }), "Selecione um item...")
+    @Html.ValidationMessageFor(model => model.BancoId)
+</div>

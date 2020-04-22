@@ -31,13 +31,13 @@ namespace Finance.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Conta> Contas { get; set; }
-        public DbSet<Receita> Receitas { get; set; }
-        public DbSet<Despesa> Despesas { get; set; }
-        public DbSet<Banco> Bancos { get; set; }
-        public DbSet<ReceitaCategoria> ReceitaCategorias { get; set; }
-        public DbSet<DespesaCategoria> DespesaCategorias { get; set; }
-        public DbSet<Transferencia> Transferencias { get; set; }
+        public DbSet<Conta> Conta { get; set; }
+        public DbSet<Despesa> Despesa { get; set; }
+        public DbSet<Receita> Receita { get; set; }
+        public DbSet<Transferencia> Transferencia { get; set; }
+        public DbSet<DespesaCategoria> DespesaCategoria { get; set; }
+        public DbSet<ReceitaCategoria> ReceitaCategoria { get; set; }
+        public DbSet<Banco> Banco { get; set; }
         public DbSet<BancoAuditoria> BancoAuditoria { get; set; }
 
         public override Task<int> SaveChangesAsync()

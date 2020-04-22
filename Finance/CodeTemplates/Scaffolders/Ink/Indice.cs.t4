@@ -52,7 +52,7 @@ foreach (ModelProperty property in properties) {
         <td>
             @Html.ActionLink("Editar", "Editar", new { id=item.<#= Model.PrimaryKeyName #> }) |
             @Html.ActionLink("Detalhes", "Detalhes", new { id=item.<#= Model.PrimaryKeyName #> }) |
-            @Html.ActionLink("Excluir", "Excluirt", new { id=item.<#= Model.PrimaryKeyName #> })
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.<#= Model.PrimaryKeyName #> })
         </td>
 <# } else { #>
         <td>
