@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Finance.Models;
 
 namespace Finance.Controllers
-{   
+{
     public class ReceitaCategoriaController : Controller
     {
         private FinanceContext context = new FinanceContext();
@@ -19,7 +14,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Indice()
         {
-            return View(await context.ReceitaCategoria.Include(receitacategoria => receitacategoria.Receitas).ToListAsync());
+            return View(await context.ReceitaCategorias.Include(receitacategoria => receitacategoria.Receitas).ToListAsync());
         }
 
         //
@@ -27,7 +22,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Detalhes(int id)
         {
-            ReceitaCategoria receitacategoria = await context.ReceitaCategoria.SingleAsync(x => x.ReceitaCategoriaId == id);
+            ReceitaCategoria receitacategoria = await context.ReceitaCategorias.SingleAsync(x => x.ReceitaCategoriaId == id);
             return View(receitacategoria);
         }
 
@@ -47,7 +42,7 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.ReceitaCategoria.Add(receitacategoria);
+                context.ReceitaCategorias.Add(receitacategoria);
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));  
             }
@@ -60,7 +55,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Editar(int id)
         {
-            ReceitaCategoria receitacategoria = await context.ReceitaCategoria.SingleAsync(x => x.ReceitaCategoriaId == id);
+            ReceitaCategoria receitacategoria = await context.ReceitaCategorias.SingleAsync(x => x.ReceitaCategoriaId == id);
             return View(receitacategoria);
         }
 
@@ -84,7 +79,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Excluir(int id)
         {
-            ReceitaCategoria receitacategoria = await context.ReceitaCategoria.SingleAsync(x => x.ReceitaCategoriaId == id);
+            ReceitaCategoria receitacategoria = await context.ReceitaCategorias.SingleAsync(x => x.ReceitaCategoriaId == id);
             return View(receitacategoria);
         }
 
@@ -94,8 +89,8 @@ namespace Finance.Controllers
         [HttpPost, ActionName(nameof(Excluir))]
         public async Task<ActionResult> ConfirmarExclusao(int id)
         {
-            ReceitaCategoria receitacategoria = await context.ReceitaCategoria.SingleAsync(x => x.ReceitaCategoriaId == id);
-            context.ReceitaCategoria.Remove(receitacategoria);
+            ReceitaCategoria receitacategoria = await context.ReceitaCategorias.SingleAsync(x => x.ReceitaCategoriaId == id);
+            context.ReceitaCategorias.Remove(receitacategoria);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Indice));
         }

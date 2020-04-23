@@ -14,7 +14,7 @@
     ContaOrigem
 </div>
 <div class="editor-field">
-    @Html.DropDownListFor(model => model.ContaOrigemId, ((IEnumerable<Finance.Models.Conta>)ViewBag.PossibleContaOrigem).Select(option => new SelectListItem {
+    @Html.DropDownListFor(model => model.ContaOrigemId, ((IEnumerable<Finance.Models.Conta>)ViewBag.ContaOrigem).Select(option => new SelectListItem {
         Text = Html.DisplayTextFor(_ => option.Nome).ToString(), 
         Value = option.ContaId.ToString(),
         Selected = (Model != null) && (option.ContaId == Model.ContaOrigemId)
@@ -25,7 +25,7 @@
     ContaDestino
 </div>
 <div class="editor-field">
-    @Html.DropDownListFor(model => model.ContaDestinoId, ((IEnumerable<Finance.Models.Conta>)ViewBag.PossibleContaDestino).Select(option => new SelectListItem {
+    @Html.DropDownListFor(model => model.ContaDestinoId, ((IEnumerable<Finance.Models.Conta>)ViewBag.ContaDestino).Select(option => new SelectListItem {
         Text = Html.DisplayTextFor(_ => option.Nome).ToString(), 
         Value = option.ContaId.ToString(),
         Selected = (Model != null) && (option.ContaId == Model.ContaDestinoId)

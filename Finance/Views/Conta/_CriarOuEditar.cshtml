@@ -31,7 +31,7 @@
 </div>
 <div class="editor-field">
     @Html.DropDownListFor(model => model.BancoId, ((IEnumerable<Finance.Models.Banco>)ViewBag.Banco).Select(option => new SelectListItem {
-        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Text = Html.DisplayTextFor(_ => option.Nome).ToString(), 
         Value = option.BancoId.ToString(),
         Selected = (Model != null) && (option.BancoId == Model.BancoId)
     }), "Selecione um item...")
@@ -42,7 +42,7 @@
 </div>
 <div class="editor-field">
     @Html.DropDownListFor(model => model.UsuarioId, ((IEnumerable<Finance.Models.Usuario>)ViewBag.Usuario).Select(option => new SelectListItem {
-        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Text = Html.DisplayTextFor(_ => option.UserName).ToString(), 
         Value = option.Id.ToString(),
         Selected = (Model != null) && (option.Id == Model.UsuarioId)
     }), "Selecione um item...")

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Web;
 using Finance.Attributes;
 using Finance.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace Finance.Models
 {
@@ -31,14 +31,14 @@ namespace Finance.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Conta> Conta { get; set; }
-        public DbSet<Despesa> Despesa { get; set; }
-        public DbSet<Receita> Receita { get; set; }
-        public DbSet<Transferencia> Transferencia { get; set; }
-        public DbSet<DespesaCategoria> DespesaCategoria { get; set; }
-        public DbSet<ReceitaCategoria> ReceitaCategoria { get; set; }
-        public DbSet<Banco> Banco { get; set; }
-        public DbSet<BancoAuditoria> BancoAuditoria { get; set; }
+        public DbSet<Conta> Contas { get; set; }
+        public DbSet<Despesa> Despesas { get; set; }
+        public DbSet<Receita> Receitas { get; set; }
+        public DbSet<Transferencia> Transferencias { get; set; }
+        public DbSet<DespesaCategoria> DespesaCategorias { get; set; }
+        public DbSet<ReceitaCategoria> ReceitaCategorias { get; set; }
+        public DbSet<Banco> Bancos { get; set; }
+        public DbSet<BancoAuditoria> BancoAuditorias { get; set; }
 
         public override Task<int> SaveChangesAsync()
         {

@@ -197,9 +197,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\HtmlButtonExtension.cs" />
     <Compile Include="Interfaces\IEntidadeNaoEditavel.cs" />
     <Compile Include="Interfaces\IEntidade.cs" />
+    <Compile Include="Migrations\202004230436196_Inicial.cs" />
+    <Compile Include="Migrations\202004230436196_Inicial.designer.cs">
+      <DependentUpon>202004230436196_Inicial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FinanceContext.cs" />
@@ -410,12 +413,6 @@
     <Content Include="Views\Shared\_PesquisaPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutFoundation.cshtml" />
     <Content Include="Views\Shared\_LayoutInk.cshtml" />
-    <Content Include="Views\Transferencia\Criar.cshtml" />
-    <Content Include="Views\Transferencia\Editar.cshtml" />
-    <Content Include="Views\Transferencia\Excluir.cshtml" />
-    <Content Include="Views\Transferencia\Detalhes.cshtml" />
-    <Content Include="Views\Transferencia\Indice.cshtml" />
-    <Content Include="Views\Transferencia\_CriarOuEditar.cshtml" />
     <Content Include="Views\Conta\Criar.cshtml" />
     <Content Include="Views\Conta\Editar.cshtml" />
     <Content Include="Views\Conta\Excluir.cshtml" />
@@ -452,9 +449,16 @@
     <Content Include="Views\Banco\Detalhes.cshtml" />
     <Content Include="Views\Banco\Indice.cshtml" />
     <Content Include="Views\Banco\_CriarOuEditar.cshtml" />
+    <Content Include="Views\Transferencia\Criar.cshtml" />
+    <Content Include="Views\Transferencia\Editar.cshtml" />
+    <Content Include="Views\Transferencia\Excluir.cshtml" />
+    <Content Include="Views\Transferencia\Detalhes.cshtml" />
+    <Content Include="Views\Transferencia\Indice.cshtml" />
+    <Content Include="Views\Transferencia\_CriarOuEditar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -466,6 +470,11 @@
     </None>
     <Content Include="Scripts\bootstrap\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\bootstrap\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004230436196_Inicial.resx">
+      <DependentUpon>202004230436196_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

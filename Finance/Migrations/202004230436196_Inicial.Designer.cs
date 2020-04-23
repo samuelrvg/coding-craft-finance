@@ -7,13 +7,13 @@ namespace Finance.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class inicial : IMigrationMetadata
+    public sealed partial class Inicial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(inicial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Inicial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001141614261_inicial"; }
+            get { return "202004230436196_Inicial"; }
         }
         
         string IMigrationMetadata.Source

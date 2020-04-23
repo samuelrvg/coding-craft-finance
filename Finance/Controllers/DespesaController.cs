@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Finance.Models;
 
 namespace Finance.Controllers
-{   
+{
     public class DespesaController : Controller
     {
         private FinanceContext context = new FinanceContext();
@@ -19,7 +14,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Indice()
         {
-            return View(await context.Despesa.Include(despesa => despesa.DespesaCategoria).ToListAsync());
+            return View(await context.Despesas.Include(despesa => despesa.DespesaCategoria).ToListAsync());
         }
 
         //
@@ -27,7 +22,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Detalhes(int id)
         {
-            Despesa despesa = await context.Despesa.SingleAsync(x => x.DespesaId == id);
+            Despesa despesa = await context.Despesas.SingleAsync(x => x.DespesaId == id);
             return View(despesa);
         }
 
@@ -36,7 +31,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Criar()
         {
-            ViewBag.DespesaCategoria = await context.DespesaCategoria.ToListAsync();
+            ViewBag.DespesaCategoria = await context.DespesaCategorias.ToListAsync();
             return View();
         } 
 
@@ -48,12 +43,12 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Despesa.Add(despesa);
+                context.Despesas.Add(despesa);
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));  
             }
 
-            ViewBag.DespesaCategoria = context.DespesaCategoria;
+            ViewBag.DespesaCategoria = context.DespesaCategorias;
             return View(despesa);
         }
         
@@ -62,8 +57,8 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Editar(int id)
         {
-            Despesa despesa = await context.Despesa.SingleAsync(x => x.DespesaId == id);
-            ViewBag.DespesaCategoria = await context.DespesaCategoria.ToListAsync();
+            Despesa despesa = await context.Despesas.SingleAsync(x => x.DespesaId == id);
+            ViewBag.DespesaCategoria = await context.DespesaCategorias.ToListAsync();
             return View(despesa);
         }
 
@@ -79,7 +74,7 @@ namespace Finance.Controllers
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));
             }
-            ViewBag.DespesaCategoria = await context.DespesaCategoria.ToListAsync();
+            ViewBag.DespesaCategoria = await context.DespesaCategorias.ToListAsync();
             return View(despesa);
         }
 
@@ -88,7 +83,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Excluir(int id)
         {
-            Despesa despesa = await context.Despesa.SingleAsync(x => x.DespesaId == id);
+            Despesa despesa = await context.Despesas.SingleAsync(x => x.DespesaId == id);
             return View(despesa);
         }
 
@@ -98,8 +93,8 @@ namespace Finance.Controllers
         [HttpPost, ActionName(nameof(Excluir))]
         public async Task<ActionResult> ConfirmarExclusao(int id)
         {
-            Despesa despesa = await context.Despesa.SingleAsync(x => x.DespesaId == id);
-            context.Despesa.Remove(despesa);
+            Despesa despesa = await context.Despesas.SingleAsync(x => x.DespesaId == id);
+            context.Despesas.Remove(despesa);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Indice));
         }

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Finance.Models;
 
 namespace Finance.Controllers
-{   
+{
     public class DespesaCategoriaController : Controller
     {
         private FinanceContext context = new FinanceContext();
@@ -19,7 +14,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Indice()
         {
-            return View(await context.DespesaCategoria.Include(despesacategoria => despesacategoria.Despesas).ToListAsync());
+            return View(await context.DespesaCategorias.Include(despesacategoria => despesacategoria.Despesas).ToListAsync());
         }
 
         //
@@ -27,7 +22,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Detalhes(int id)
         {
-            DespesaCategoria despesacategoria = await context.DespesaCategoria.SingleAsync(x => x.DespesaCategoriaId == id);
+            DespesaCategoria despesacategoria = await context.DespesaCategorias.SingleAsync(x => x.DespesaCategoriaId == id);
             return View(despesacategoria);
         }
 
@@ -47,7 +42,7 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.DespesaCategoria.Add(despesacategoria);
+                context.DespesaCategorias.Add(despesacategoria);
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));  
             }
@@ -60,7 +55,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Editar(int id)
         {
-            DespesaCategoria despesacategoria = await context.DespesaCategoria.SingleAsync(x => x.DespesaCategoriaId == id);
+            DespesaCategoria despesacategoria = await context.DespesaCategorias.SingleAsync(x => x.DespesaCategoriaId == id);
             return View(despesacategoria);
         }
 
@@ -84,7 +79,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Excluir(int id)
         {
-            DespesaCategoria despesacategoria = await context.DespesaCategoria.SingleAsync(x => x.DespesaCategoriaId == id);
+            DespesaCategoria despesacategoria = await context.DespesaCategorias.SingleAsync(x => x.DespesaCategoriaId == id);
             return View(despesacategoria);
         }
 
@@ -94,8 +89,8 @@ namespace Finance.Controllers
         [HttpPost, ActionName(nameof(Excluir))]
         public async Task<ActionResult> ConfirmarExclusao(int id)
         {
-            DespesaCategoria despesacategoria = await context.DespesaCategoria.SingleAsync(x => x.DespesaCategoriaId == id);
-            context.DespesaCategoria.Remove(despesacategoria);
+            DespesaCategoria despesacategoria = await context.DespesaCategorias.SingleAsync(x => x.DespesaCategoriaId == id);
+            context.DespesaCategorias.Remove(despesacategoria);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Indice));
         }

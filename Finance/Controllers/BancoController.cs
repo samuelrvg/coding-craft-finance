@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Finance.Models;
 
@@ -19,7 +14,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Indice()
         {
-            return View(await context.Banco.Include(banco => banco.Contas).ToListAsync());
+            return View(await context.Bancos.Include(banco => banco.Contas).ToListAsync());
         }
 
         //
@@ -27,7 +22,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Detalhes(int id)
         {
-            Banco banco = await context.Banco.SingleAsync(x => x.BancoId == id);
+            Banco banco = await context.Bancos.SingleAsync(x => x.BancoId == id);
             return View(banco);
         }
 
@@ -47,7 +42,7 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Banco.Add(banco);
+                context.Bancos.Add(banco);
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));  
             }
@@ -60,7 +55,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Editar(int id)
         {
-            Banco banco = await context.Banco.SingleAsync(x => x.BancoId == id);
+            Banco banco = await context.Bancos.SingleAsync(x => x.BancoId == id);
             return View(banco);
         }
 
@@ -84,7 +79,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Excluir(int id)
         {
-            Banco banco = await context.Banco.SingleAsync(x => x.BancoId == id);
+            Banco banco = await context.Bancos.SingleAsync(x => x.BancoId == id);
             return View(banco);
         }
 
@@ -94,8 +89,8 @@ namespace Finance.Controllers
         [HttpPost, ActionName(nameof(Excluir))]
         public async Task<ActionResult> ConfirmarExclusao(int id)
         {
-            Banco banco = await context.Banco.SingleAsync(x => x.BancoId == id);
-            context.Banco.Remove(banco);
+            Banco banco = await context.Bancos.SingleAsync(x => x.BancoId == id);
+            context.Bancos.Remove(banco);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Indice));
         }

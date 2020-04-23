@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Finance.Models;
 
 namespace Finance.Controllers
-{   
+{
     public class ContaController : Controller
     {
         private FinanceContext context = new FinanceContext();
@@ -19,7 +14,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Indice()
         {
-            return View(await context.Conta.Include(conta => conta.Banco).Include(conta => conta.Usuario).Include(conta => conta.TransferenciasComoOrigem).Include(conta => conta.TransferenciasComoDestino).Include(conta => conta.Receitas).ToListAsync());
+            return View(await context.Contas.Include(conta => conta.Banco).Include(conta => conta.Usuario).Include(conta => conta.TransferenciasComoOrigem).Include(conta => conta.TransferenciasComoDestino).Include(conta => conta.Receitas).ToListAsync());
         }
 
         //
@@ -27,7 +22,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Detalhes(int id)
         {
-            Conta conta = await context.Conta.SingleAsync(x => x.ContaId == id);
+            Conta conta = await context.Contas.SingleAsync(x => x.ContaId == id);
             return View(conta);
         }
 
@@ -36,8 +31,8 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Criar()
         {
-            ViewBag.Banco = new SelectList(context.Banco, "BancoId", "Nome");
-            ViewBag.Usuario = new SelectList(context.Set<Usuario>(), "Id", "Email");
+            ViewBag.Banco = await context.Bancos.ToListAsync();
+            ViewBag.Usuario = await context.Set<Usuario>().ToListAsync();
             return View();
         } 
 
@@ -49,13 +44,13 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Conta.Add(conta);
+                context.Contas.Add(conta);
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));  
             }
 
-            ViewBag.Banco = new SelectList(context.Banco, "BancoId", "Nome");
-            ViewBag.Usuario = new SelectList(context.Set<Usuario>(), "Id", "Email");
+            ViewBag.Banco = await context.Bancos.ToListAsync();
+            ViewBag.Usuario = await context.Set<Usuario>().ToListAsync();
             return View(conta);
         }
         
@@ -64,9 +59,9 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Editar(int id)
         {
-            Conta conta = await context.Conta.SingleAsync(x => x.ContaId == id);
-            ViewBag.Banco = new SelectList(context.Banco, "BancoId", "Nome");
-            ViewBag.Usuario = new SelectList(context.Set<Usuario>(), "Id", "Email");
+            Conta conta = await context.Contas.SingleAsync(x => x.ContaId == id);
+            ViewBag.Banco = await context.Bancos.ToListAsync();
+            ViewBag.Usuario = await context.Set<Usuario>().ToListAsync();
             return View(conta);
         }
 
@@ -82,8 +77,8 @@ namespace Finance.Controllers
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));
             }
-            ViewBag.Banco = new SelectList(context.Banco, "BancoId", "Nome");
-            ViewBag.Usuario = new SelectList(context.Set<Usuario>(), "Id", "Email");
+            ViewBag.Banco = await context.Bancos.ToListAsync();
+            ViewBag.Usuario = await context.Set<Usuario>().ToListAsync();
             return View(conta);
         }
 
@@ -92,7 +87,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Excluir(int id)
         {
-            Conta conta = await context.Conta.SingleAsync(x => x.ContaId == id);
+            Conta conta = await context.Contas.SingleAsync(x => x.ContaId == id);
             return View(conta);
         }
 
@@ -102,8 +97,8 @@ namespace Finance.Controllers
         [HttpPost, ActionName(nameof(Excluir))]
         public async Task<ActionResult> ConfirmarExclusao(int id)
         {
-            Conta conta = await context.Conta.SingleAsync(x => x.ContaId == id);
-            context.Conta.Remove(conta);
+            Conta conta = await context.Contas.SingleAsync(x => x.ContaId == id);
+            context.Contas.Remove(conta);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Indice));
         }

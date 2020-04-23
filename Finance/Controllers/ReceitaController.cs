@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Finance.Models;
 
 namespace Finance.Controllers
-{   
+{
     public class ReceitaController : Controller
     {
         private FinanceContext context = new FinanceContext();
@@ -19,7 +14,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Indice()
         {
-            return View(await context.Receita.Include(receita => receita.ReceitaCategoria).Include(receita => receita.Banco).ToListAsync());
+            return View(await context.Receitas.Include(receita => receita.ReceitaCategoria).Include(receita => receita.Banco).ToListAsync());
         }
 
         //
@@ -27,7 +22,7 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Detalhes(int id)
         {
-            Receita receita = await context.Receita.SingleAsync(x => x.ReceitaId == id);
+            Receita receita = await context.Receitas.SingleAsync(x => x.ReceitaId == id);
             return View(receita);
         }
 
@@ -36,8 +31,8 @@ namespace Finance.Controllers
 
         public async Task<ActionResult> Criar()
         {
-            ViewBag.ReceitaCategoria = await context.ReceitaCategoria.ToListAsync();
-            ViewBag.Banco = await context.Banco.ToListAsync();
+            ViewBag.ReceitaCategoria = await context.ReceitaCategorias.ToListAsync();
+            ViewBag.Banco = await context.Bancos.ToListAsync();
             return View();
         } 
 
@@ -49,13 +44,13 @@ namespace Finance.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Receita.Add(receita);
+                context.Receitas.Add(receita);
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));  
             }
 
-            ViewBag.ReceitaCategoria = context.ReceitaCategoria;
-            ViewBag.Banco = context.Banco;
+            ViewBag.ReceitaCategoria = context.ReceitaCategorias;
+            ViewBag.Banco = context.Bancos;
             return View(receita);
         }
         
@@ -64,9 +59,9 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Editar(int id)
         {
-            Receita receita = await context.Receita.SingleAsync(x => x.ReceitaId == id);
-            ViewBag.ReceitaCategoria = await context.ReceitaCategoria.ToListAsync();
-            ViewBag.Banco = await context.Banco.ToListAsync();
+            Receita receita = await context.Receitas.SingleAsync(x => x.ReceitaId == id);
+            ViewBag.ReceitaCategoria = await context.ReceitaCategorias.ToListAsync();
+            ViewBag.Banco = await context.Bancos.ToListAsync();
             return View(receita);
         }
 
@@ -82,8 +77,8 @@ namespace Finance.Controllers
                 await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Indice));
             }
-            ViewBag.ReceitaCategoria = await context.ReceitaCategoria.ToListAsync();
-            ViewBag.Banco = await context.Banco.ToListAsync();
+            ViewBag.ReceitaCategoria = await context.ReceitaCategorias.ToListAsync();
+            ViewBag.Banco = await context.Bancos.ToListAsync();
             return View(receita);
         }
 
@@ -92,7 +87,7 @@ namespace Finance.Controllers
  
         public async Task<ActionResult> Excluir(int id)
         {
-            Receita receita = await context.Receita.SingleAsync(x => x.ReceitaId == id);
+            Receita receita = await context.Receitas.SingleAsync(x => x.ReceitaId == id);
             return View(receita);
         }
 
@@ -102,8 +97,8 @@ namespace Finance.Controllers
         [HttpPost, ActionName(nameof(Excluir))]
         public async Task<ActionResult> ConfirmarExclusao(int id)
         {
-            Receita receita = await context.Receita.SingleAsync(x => x.ReceitaId == id);
-            context.Receita.Remove(receita);
+            Receita receita = await context.Receitas.SingleAsync(x => x.ReceitaId == id);
+            context.Receitas.Remove(receita);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Indice));
         }
