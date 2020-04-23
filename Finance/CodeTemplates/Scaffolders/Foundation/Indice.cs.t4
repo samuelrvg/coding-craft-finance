@@ -124,13 +124,14 @@ List<ModelProperty> GetModelProperties(EnvDTE.CodeType typeInfo, bool includeUnb
 }
 
 // Change this list to include the names of properties that should be selected to represent an entity as a single string
-static string[] displayPropertyNames = new[] { "Name", "Title", "LastName", "Surname", "Subject", "Count" };
+static string[] displayPropertyNames = new[] { "Nome", "Titulo", "UltimoNome", "Sobrenome", "Descricao", "Count" };
 
 string GetValueExpression(string propertyExpression, EnvDTE.CodeType propertyType) {
 	if (propertyType != null) {
 		var chosenSubproperty = propertyType.DisplayColumnProperty() ?? propertyType.FindProperty(displayPropertyNames);
 		if (chosenSubproperty != null) {
 			var toStringSuffix = chosenSubproperty.Type.AsFullName == "System.String" ? "" : ".ToString()";
+            //var toStringSuffix2 = chosenSubproperty.Type.AsFullName == "System.Collections.Generic" ? string.Format(".FirstOrDefault().{0}", propertyType.FindProperty(displayPropertyNames)) : ".ToString()";
 			return String.Format("({0} == null ? \"None\" : {0}.{1}{2})", propertyExpression, chosenSubproperty.Name, toStringSuffix);
 		}
 	}

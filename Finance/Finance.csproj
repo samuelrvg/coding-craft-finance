@@ -437,12 +437,6 @@
     <Content Include="Views\DespesaCategoria\Detalhes.cshtml" />
     <Content Include="Views\DespesaCategoria\Indice.cshtml" />
     <Content Include="Views\DespesaCategoria\_CriarOuEditar.cshtml" />
-    <Content Include="Views\ReceitaCategoria\Criar.cshtml" />
-    <Content Include="Views\ReceitaCategoria\Editar.cshtml" />
-    <Content Include="Views\ReceitaCategoria\Excluir.cshtml" />
-    <Content Include="Views\ReceitaCategoria\Detalhes.cshtml" />
-    <Content Include="Views\ReceitaCategoria\Indice.cshtml" />
-    <Content Include="Views\ReceitaCategoria\_CriarOuEditar.cshtml" />
     <Content Include="Views\Banco\Criar.cshtml" />
     <Content Include="Views\Banco\Editar.cshtml" />
     <Content Include="Views\Banco\Excluir.cshtml" />
@@ -455,6 +449,12 @@
     <Content Include="Views\Transferencia\Detalhes.cshtml" />
     <Content Include="Views\Transferencia\Indice.cshtml" />
     <Content Include="Views\Transferencia\_CriarOuEditar.cshtml" />
+    <Content Include="Views\ReceitaCategoria\Criar.cshtml" />
+    <Content Include="Views\ReceitaCategoria\Editar.cshtml" />
+    <Content Include="Views\ReceitaCategoria\Excluir.cshtml" />
+    <Content Include="Views\ReceitaCategoria\Detalhes.cshtml" />
+    <Content Include="Views\ReceitaCategoria\_CriarOuEditar.cshtml" />
+    <Content Include="Views\ReceitaCategoria\Indice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

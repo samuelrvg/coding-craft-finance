@@ -15,66 +15,49 @@
             <th>
                 Nome
             </th>
-                <th>
+            <th>
                 Descricao
             </th>
-                <th>
+            <th>
                 SaldoAtual
             </th>
-                <th>
+            <th>
                 Banco
             </th>
-                <th>
+            <th>
                 Usuario
             </th>
-                <th>
-                TransferenciasComoOrigem
-            </th>
-                <th>
-                TransferenciasComoDestino
-            </th>
-                <th>
-                Receitas
-            </th>
-                <th></th>
+            <th></th>
         </tr>
     </thead>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <td>
-			@item.Nome
-        </td>
-        <td>
-			@item.Descricao
-        </td>
-        <td>
-			@String.Format("{0:F}", item.SaldoAtual)
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.Banco.Nome).ToString()
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.Usuario.UserName).ToString()
-        </td>
-        <td>
-			@(item.TransferenciasComoOrigem == null ? "None" : item.TransferenciasComoOrigem.Count.ToString())
-        </td>
-        <td>
-			@(item.TransferenciasComoDestino == null ? "None" : item.TransferenciasComoDestino.Count.ToString())
-        </td>
-        <td>
-			@(item.Receitas == null ? "None" : item.Receitas.Count.ToString())
-        </td>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+                @item.Descricao
+            </td>
+            <td>
+                @String.Format("{0:F}", item.SaldoAtual)
+            </td>
+            <td>
+                @Html.DisplayTextFor(_ => item.Banco.Nome).ToString()
+            </td>
+            <td>
+                @Html.DisplayTextFor(_ => item.Usuario.UserName).ToString()
+            </td>
 
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.ContaId }, new { @class = "button tiny primary" })
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.ContaId }, new { @class = "button tiny secondary" })
-            @Html.ActionLink("Excluir", "Excluir", new { id=item.ContaId }, new { @class = "button tiny alert" })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.ContaId }, new { @class = "button tiny primary" })
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.ContaId }, new { @class = "button tiny secondary" })
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.ContaId }, new { @class = "button tiny alert" })
+            </td>
+        </tr>
+    }
 
 </table>
 
