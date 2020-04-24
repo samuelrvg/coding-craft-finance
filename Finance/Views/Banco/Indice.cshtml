@@ -12,57 +12,58 @@
 <table>
     <thead>
         <tr>
-                <th>
+            <th>
                 Nome
             </th>
-                <th>
+            <th>
                 Contas
             </th>
-                <th>
+            <th>
                 UltimaModificacao
             </th>
-                <th>
+            <th>
                 UsuarioModificacao
             </th>
-                <th>
+            <th>
                 DataCriacao
             </th>
-                <th>
+            <th>
                 UsuarioCriacao
             </th>
-                <th></th>
+            <th></th>
         </tr>
     </thead>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <td>
-			@item.Nome
-        </td>
-        <td>
-			@(item.Contas == null ? "None" : item.Contas.Count.ToString())
-        </td>
-        <td>
-			@String.Format("{0:g}", item.UltimaModificacao)
-        </td>
-        <td>
-			@item.UsuarioModificacao
-        </td>
-        <td>
-			@String.Format("{0:g}", item.DataCriacao)
-        </td>
-        <td>
-			@item.UsuarioCriacao
-        </td>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+                @(item.Contas == null ? "None" : item?.Contas?.FirstOrDefault()?.Nome.ToString())
+            </td>
+            <td>
+                @String.Format("{0:g}", item.UltimaModificacao)
+            </td>
+            <td>
+                @item.UsuarioModificacao
+            </td>
+            <td>
+                @String.Format("{0:g}", item.DataCriacao)
+            </td>
+            <td>
+                @item.UsuarioCriacao
+            </td>
 
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.BancoId }, new { @class = "button tiny primary" })
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.BancoId }, new { @class = "button tiny secondary" })
-            @Html.ActionLink("Excluir", "Excluir", new { id=item.BancoId }, new { @class = "button tiny alert" })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.BancoId }, new { @class = "button tiny primary" })
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.BancoId }, new { @class = "button tiny secondary" })
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.BancoId }, new { @class = "button tiny alert" })
+            </td>
+        </tr>
+    }
 
 </table>
 

@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<Finance.Models.ReceitaCategoria>
 
 @{
+    /**/
+
     ViewBag.Title = "Indice";
 }
 
@@ -12,34 +14,33 @@
 <table>
     <thead>
         <tr>
-                <th>
+            <th>
                 Nome
             </th>
-                <th>
+            <th>
                 Receitas
             </th>
-                <th></th>
+            <th></th>
         </tr>
     </thead>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <td>
-			@item.Nome
-        </td>
-        <td>
-			@(item.Receitas == null ? "None" : item.Receitas?.FirstOrDefault()?.Descricao.ToString())
-        </td>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+                @(item.Receitas == null ? "None" : item.Receitas?.FirstOrDefault()?.Descricao.ToString())
+            </td>
 
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.ReceitaCategoriaId }, new { @class = "button tiny primary" })
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.ReceitaCategoriaId }, new { @class = "button tiny secondary" })
-            @Html.ActionLink("Excluir", "Excluir", new { id=item.ReceitaCategoriaId }, new { @class = "button tiny alert" })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.ReceitaCategoriaId }, new { @class = "button tiny primary" })
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.ReceitaCategoriaId }, new { @class = "button tiny secondary" })
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.ReceitaCategoriaId }, new { @class = "button tiny alert" })
+            </td>
+        </tr>
+    }
 
 </table>
-
-

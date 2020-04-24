@@ -1,0 +1,13 @@
+﻿
+
+Get-Scaffolder
+
+scaffold PortuguesController <Model> -ModelType:Finance.Models.<Model>
+scaffold PortuguesViews <Model> -ModelType:Finance.Models.<Model>
+
+scaffold PortuguesController Bancos -ModelType:Finance.Models.Banco -Force
+
+-----------
+
+Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
+https://stackoverflow.com/questions/32780315/could-not-find-a-part-of-the-path-bin-roslyn-csc-exe

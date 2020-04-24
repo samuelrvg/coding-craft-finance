@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<Finance.Models.Receita>
 
 @{
+    /**/
+
     ViewBag.Title = "Indice";
 }
 
@@ -12,45 +14,46 @@
 <table>
     <thead>
         <tr>
-                <th>
+            <th>
                 Descricao
             </th>
-                <th>
+            <th>
                 Valor
             </th>
-                <th>
+            <th>
                 Banco
             </th>
-                <th>
+            <th>
                 ReceitaCategoria
             </th>
-                <th></th>
+            <th></th>
         </tr>
     </thead>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <td>
-			@item.Descricao
-        </td>
-        <td>
-			@String.Format("{0:F}", item.Valor)
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.Banco.Nome).ToString()
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.ReceitaCategoria.Nome).ToString()
-        </td>
+            <td>
+                @item.Descricao
+            </td>
+            <td>
+                @String.Format("{0:F}", item.Valor)
+            </td>
+            <td>
+                @Html.DisplayTextFor(_ => item.Banco.Nome).ToString()
+            </td>
+            <td>
+                @Html.DisplayTextFor(_ => item.ReceitaCategoria.Nome).ToString()
+            </td>
 
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.ReceitaId }, new { @class = "button tiny primary" })
-            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.ReceitaId }, new { @class = "button tiny secondary" })
-            @Html.ActionLink("Excluir", "Excluir", new { id=item.ReceitaId }, new { @class = "button tiny alert" })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.ReceitaId }, new { @class = "button tiny primary" })
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.ReceitaId }, new { @class = "button tiny secondary" })
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.ReceitaId }, new { @class = "button tiny alert" })
+            </td>
+        </tr>
+    }
 
 </table>
 

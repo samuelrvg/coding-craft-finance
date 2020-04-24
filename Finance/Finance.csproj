@@ -161,7 +161,7 @@
     <Compile Include="ViewModels\PesquisaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CommandsScaffolder.txt" />
+    <Content Include="Commands.txt" />
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />

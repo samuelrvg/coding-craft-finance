@@ -1,8 +1,0 @@
-﻿
-
-Get-Scaffolder
-
-scaffold PortuguesController <Model> -ModelType:Finance.Models.<Model>
-scaffold PortuguesViews <Model> -ModelType:Finance.Models.<Model>
-
-scaffold PortuguesController Bancos -ModelType:Finance.Models.Banco -Force
