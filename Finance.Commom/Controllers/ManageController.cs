@@ -6,6 +6,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Finance.Models;
+using Finance.ViewModels;
+using static Finance.IdentityConfig;
 
 namespace Finance.Controllers
 {

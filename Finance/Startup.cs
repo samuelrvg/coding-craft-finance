@@ -8,7 +8,7 @@ namespace Finance
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            new CommonStartup().ConfigureAuth(app);
         }
     }
 }
