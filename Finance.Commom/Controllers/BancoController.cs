@@ -12,7 +12,7 @@ namespace Finance.Controllers
         //
         // GET: /Bancos/
 
-        public async Task<ActionResult> Indice()
+        public virtual async Task<ActionResult> Indice()
         {
             return View(await context.Bancos.Include(banco => banco.Contas).ToListAsync());
         }
@@ -20,7 +20,7 @@ namespace Finance.Controllers
         //
         // GET: /Bancos/Detalhes/5
 
-        public async Task<ActionResult> Detalhes(int id)
+        public virtual async Task<ActionResult> Detalhes(int id)
         {
             Banco banco = await context.Bancos.SingleAsync(x => x.BancoId == id);
             return View(banco);
@@ -29,7 +29,7 @@ namespace Finance.Controllers
         //
         // GET: /Bancos/Criar
 
-        public async Task<ActionResult> Criar()
+        public virtual async Task<ActionResult> Criar()
         {
             return View();
         } 
@@ -38,7 +38,7 @@ namespace Finance.Controllers
         // POST: /Bancos/Criar
 
         [HttpPost]
-        public async Task<ActionResult> Criar(Banco banco)
+        public virtual async Task<ActionResult> Criar(Banco banco)
         {
             if (ModelState.IsValid)
             {
@@ -53,7 +53,7 @@ namespace Finance.Controllers
         //
         // GET: /Bancos/Editar/5
  
-        public async Task<ActionResult> Editar(int id)
+        public virtual async Task<ActionResult> Editar(int id)
         {
             Banco banco = await context.Bancos.SingleAsync(x => x.BancoId == id);
             return View(banco);
@@ -63,7 +63,7 @@ namespace Finance.Controllers
         // POST: /Bancos/Editar/5
 
         [HttpPost]
-        public async Task<ActionResult> Editar(Banco banco)
+        public virtual async Task<ActionResult> Editar(Banco banco)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace Finance.Controllers
         //
         // GET: /Bancos/Excluir/5
  
-        public async Task<ActionResult> Excluir(int id)
+        public virtual async Task<ActionResult> Excluir(int id)
         {
             Banco banco = await context.Bancos.SingleAsync(x => x.BancoId == id);
             return View(banco);
@@ -87,7 +87,7 @@ namespace Finance.Controllers
         // POST: /Bancos/Excluir/5
 
         [HttpPost, ActionName(nameof(Excluir))]
-        public async Task<ActionResult> ConfirmarExclusao(int id)
+        public virtual async Task<ActionResult> ConfirmarExclusao(int id)
         {
             Banco banco = await context.Bancos.SingleAsync(x => x.BancoId == id);
             context.Bancos.Remove(banco);

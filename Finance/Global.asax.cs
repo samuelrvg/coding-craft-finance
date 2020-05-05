@@ -1,6 +1,7 @@
 ﻿//using StackExchange.Profiling;
 //using StackExchange.Profiling.EntityFramework6;
 //using StackExchange.Profiling.Mvc;
+using Finance.Commom.Filters;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -12,9 +13,11 @@ namespace Finance
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalFilters.Filters.Add(new LayoutChooserAttribute());
 
             //MiniProfiler.Configure(new MiniProfilerOptions
             //{

@@ -31,17 +31,16 @@
                     <li>@Html.ActionLink("Receitas", "Indice", "Receita")</li>
                     <li>@Html.ActionLink("Receitas Categorias", "Indice", "ReceitaCategoria")</li>
                     <li>@Html.ActionLink("Despesas Categorias", "Indice", "DespesaCategoria")</li>
+                    <li>@Html.ActionLink("Foundation", "FoundationTemplate", "Home")</li>
+                    <li>@Html.ActionLink("Ink", "InkTemplate", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

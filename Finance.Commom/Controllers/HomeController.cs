@@ -22,5 +22,23 @@ namespace Finance.Controllers
 
             return View();
         }
+
+        public ActionResult InkTemplate()
+        {
+            Session["Template"] = "_LayoutInk";
+            return View("Index");
+        }
+
+        public ActionResult FoundationTemplate()
+        {
+            Session["Template"] = "_LayoutFoundation";
+            return View("Index");
+        }
+
+        public ActionResult BootstrapTemplate()
+        {
+            Session["Template"] = "_Layout";
+            return View("Index");
+        }
     }
 }

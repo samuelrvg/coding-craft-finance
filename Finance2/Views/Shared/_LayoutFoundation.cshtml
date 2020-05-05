@@ -1,0 +1,99 @@
+﻿@*@using StackExchange.Profiling;
+    @using StackExchange.Profiling.Mvc*@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    @*Set the viewport width to device width for mobile *@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewBag.Title - Finance</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @Styles.Render("~/Content/foundation/css")
+
+    @RenderSection("head", required: false)
+
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333333;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 16px;
+                text-decoration: none;
+            }
+
+                li a:hover {
+                    background-color: #111111;
+                }
+    </style>
+</head>
+<body>
+
+    @*<ul class="menu">
+            <li class="is-active"><a>Home</a></li>
+            <li><a>About</a></li>
+            <li><a>Nachos</a></li>
+        </ul>*@
+
+    <div class="row">
+
+        <ul>
+            <li>@Html.ActionLink("Contas", "Indice", "Conta")</li>
+            <li>@Html.ActionLink("Transferencias", "Indice", "Transferencia")</li>
+            <li>@Html.ActionLink("Bancos", "Indice", "Banco")</li>
+            <li>@Html.ActionLink("Despesas", "Indice", "Despesa")</li>
+            <li>@Html.ActionLink("Receitas", "Indice", "Receita")</li>
+            <li>@Html.ActionLink("Receitas Categorias", "Indice", "ReceitaCategoria")</li>
+            <li>@Html.ActionLink("Despesas Categorias", "Indice", "DespesaCategoria")</li>
+        </ul>
+
+        @RenderBody()
+
+        @*<div class="top-bar">
+                <div class="top-bar-left">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text">Site Title</li>
+                        <li>
+                            <a href="#">One</a>
+                            <ul class="menu vertical">
+                                <li><a href="#">One</a></li>
+                                <li><a href="#">Two</a></li>
+                                <li><a href="#">Three</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Two</a></li>
+                        <li><a href="#">Three</a></li>
+                    </ul>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li><input type="search" placeholder="Search"></li>
+                        <li><button type="button" class="button">Search</button></li>
+                    </ul>
+                </div>
+            </div>*@
+    </div>
+
+    @Scripts.Render("~/bundles/foundation")
+    <script>
+        $(document).foundation();
+    </script>
+    @*Use the Scripts section to define page specific scripts*@
+    @RenderSection("scripts", required: false)
+    @*@MiniProfiler.Current.RenderIncludes(position: RenderPosition.Right, showTrivial: false, showTimeWithChildren: false, startHidden: false)*@
+</body>
+</html>

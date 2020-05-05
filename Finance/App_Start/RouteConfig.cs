@@ -16,7 +16,7 @@ namespace Finance
                 namespaces: new string[] { "Finance.Controllers" }
             );
 
-            rota.DataTokens["UseNamespaceFallback"] = true;
+            //rota.DataTokens["UseNamespaceFallback"] = true;
         }
     }
 }

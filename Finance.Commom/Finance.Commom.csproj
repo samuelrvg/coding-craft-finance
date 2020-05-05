@@ -8,8 +8,8 @@
     <ProjectGuid>{5C524084-16AA-4A9A-8318-00D68488FAFA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Finance.Modularizacao.Commom</RootNamespace>
-    <AssemblyName>Finance.Modularizacao.Commom</AssemblyName>
+    <RootNamespace>Finance.Commom</RootNamespace>
+    <AssemblyName>Finance.Commom</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -45,6 +45,7 @@
     <Compile Include="Controllers\ReceitaCategoriaController.cs" />
     <Compile Include="Controllers\ReceitaController.cs" />
     <Compile Include="Controllers\TransferenciaController.cs" />
+    <Compile Include="Filters\LayoutChooserAttribute.cs" />
     <Compile Include="Infrastructure\CommonStartup.cs" />
     <Compile Include="Infrastructure\IdentityConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

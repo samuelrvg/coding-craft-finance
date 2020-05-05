@@ -16,6 +16,9 @@ namespace Finance.Models
         public FinanceContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            //resolve erro finance2
+            var ensureDLLIsCopied =
+                System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
 
         public static FinanceContext Create()
