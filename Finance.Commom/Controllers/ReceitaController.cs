@@ -5,6 +5,7 @@ using Finance.Models;
 
 namespace Finance.Controllers
 {
+    [Authorize]
     public class ReceitaController : Controller
     {
         protected readonly FinanceContext context = new FinanceContext();

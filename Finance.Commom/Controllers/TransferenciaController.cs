@@ -4,7 +4,8 @@ using System.Web.Mvc;
 using Finance.Models;
 
 namespace Finance.Controllers
-{   
+{
+    [Authorize]
     public class TransferenciaController : Controller
     {
         private FinanceContext context = new FinanceContext();

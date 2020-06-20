@@ -5,6 +5,7 @@ using Finance.Models;
 
 namespace Finance.Controllers
 {   
+    [Authorize]
     public class BancoController : Controller
     {
         protected readonly FinanceContext context = new FinanceContext();

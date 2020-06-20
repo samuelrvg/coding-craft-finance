@@ -26,18 +26,19 @@
                     {
                         ContaId = c.Int(nullable: false, identity: true),
                         BancoId = c.Int(nullable: false),
-                        UsuarioId = c.String(maxLength: 128),
+                        UsuarioId = c.String(),
                         Nome = c.String(nullable: false, maxLength: 300),
                         Descricao = c.String(),
                         SaldoAtual = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Usuario_Id = c.Int(),
                         BancoAuditoria_BancoAuditoriaId = c.Int(),
                     })
                 .PrimaryKey(t => t.ContaId)
                 .ForeignKey("dbo.Bancos", t => t.BancoId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UsuarioId)
+                .ForeignKey("dbo.AspNetUsers", t => t.Usuario_Id)
                 .ForeignKey("dbo.BancoAuditoria", t => t.BancoAuditoria_BancoAuditoriaId)
                 .Index(t => t.BancoId)
-                .Index(t => t.UsuarioId)
+                .Index(t => t.Usuario_Id)
                 .Index(t => t.BancoAuditoria_BancoAuditoriaId);
             
             CreateTable(
@@ -102,7 +103,7 @@
                 "dbo.AspNetUsers",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -123,7 +124,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.Int(nullable: false),
                         ClaimType = c.String(),
                         ClaimValue = c.String(),
                     })
@@ -137,7 +138,7 @@
                     {
                         LoginProvider = c.String(nullable: false, maxLength: 128),
                         ProviderKey = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
@@ -147,8 +148,8 @@
                 "dbo.AspNetUserRoles",
                 c => new
                     {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.Int(nullable: false),
+                        RoleId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
@@ -183,7 +184,7 @@
                 "dbo.AspNetRoles",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
@@ -198,7 +199,7 @@
             DropForeignKey("dbo.Contas", "BancoAuditoria_BancoAuditoriaId", "dbo.BancoAuditoria");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Contas", "UsuarioId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Contas", "Usuario_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Transferencias", "ContaOrigemId", "dbo.Contas");
             DropForeignKey("dbo.Transferencias", "ContaDestinoId", "dbo.Contas");
@@ -222,7 +223,7 @@
             DropIndex("dbo.Receitas", new[] { "ReceitaCategoriaId" });
             DropIndex("dbo.Bancos", "IUQ_Bancos_Nome");
             DropIndex("dbo.Contas", new[] { "BancoAuditoria_BancoAuditoriaId" });
-            DropIndex("dbo.Contas", new[] { "UsuarioId" });
+            DropIndex("dbo.Contas", new[] { "Usuario_Id" });
             DropIndex("dbo.Contas", new[] { "BancoId" });
             DropIndex("dbo.BancoAuditoria", "IUQ_BancosAuditoria_Nome");
             DropTable("dbo.AspNetRoles");

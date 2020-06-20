@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Finance.Domain.Models.Identity;
 using Finance.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -31,18 +32,18 @@ namespace Finance
         }
 
         // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-        public class ApplicationUserManager : UserManager<Usuario>
+        public class ApplicationUserManager : UserManager<Usuario, int>
         {
-            public ApplicationUserManager(IUserStore<Usuario> store)
+            public ApplicationUserManager(IUserStore<Usuario, int> store)
                 : base(store)
             {
             }
 
             public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
             {
-                var manager = new ApplicationUserManager(new UserStore<Usuario>(context.Get<FinanceContext>()));
+                var manager = new ApplicationUserManager(new UserStore<Usuario, ApplicationRole, int, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>(context.Get<FinanceContext>()));
                 // Configure validation logic for usernames
-                manager.UserValidator = new UserValidator<Usuario>(manager)
+                manager.UserValidator = new UserValidator<Usuario, int>(manager)
                 {
                     AllowOnlyAlphanumericUserNames = false,
                     RequireUniqueEmail = true
@@ -65,11 +66,11 @@ namespace Finance
 
                 // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
                 // You can write your own provider and plug it in here.
-                manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<Usuario>
+                manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<Usuario, int>
                 {
                     MessageFormat = "Your security code is {0}"
                 });
-                manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<Usuario>
+                manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<Usuario, int>
                 {
                     Subject = "Security Code",
                     BodyFormat = "Your security code is {0}"
@@ -80,14 +81,14 @@ namespace Finance
                 if (dataProtectionProvider != null)
                 {
                     manager.UserTokenProvider =
-                        new DataProtectorTokenProvider<Usuario>(dataProtectionProvider.Create("ASP.NET Identity"));
+                        new DataProtectorTokenProvider<Usuario, int>(dataProtectionProvider.Create("ASP.NET Identity"));
                 }
                 return manager;
             }
         }
 
         // Configure the application sign-in manager which is used in this application.
-        public class ApplicationSignInManager : SignInManager<Usuario, string>
+        public class ApplicationSignInManager : SignInManager<Usuario, int>
         {
             public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
                 : base(userManager, authenticationManager)

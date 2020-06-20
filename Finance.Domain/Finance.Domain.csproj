@@ -61,9 +61,9 @@
     <Compile Include="Attributes\CascadeDeleteAttributeConvention.cs" />
     <Compile Include="Interfaces\IEntidade.cs" />
     <Compile Include="Interfaces\IEntidadeNaoEditavel.cs" />
-    <Compile Include="Migrations\202006202144595_Initial.cs" />
-    <Compile Include="Migrations\202006202144595_Initial.designer.cs">
-      <DependentUpon>202006202144595_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202006202224327_Initial.cs" />
+    <Compile Include="Migrations\202006202224327_Initial.designer.cs">
+      <DependentUpon>202006202224327_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Banco.cs" />
@@ -72,6 +72,10 @@
     <Compile Include="Models\Despesa.cs" />
     <Compile Include="Models\DespesaCategoria.cs" />
     <Compile Include="Models\FinanceContext.cs" />
+    <Compile Include="Models\Identity\ApplicationRole.cs" />
+    <Compile Include="Models\Identity\ApplicationUserClaim.cs" />
+    <Compile Include="Models\Identity\ApplicationUserLogin.cs" />
+    <Compile Include="Models\Identity\ApplicationUserRole.cs" />
     <Compile Include="Models\Receita.cs" />
     <Compile Include="Models\ReceitaCategoria.cs" />
     <Compile Include="Models\Transferencia.cs" />
@@ -85,8 +89,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006202144595_Initial.resx">
-      <DependentUpon>202006202144595_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006202224327_Initial.resx">
+      <DependentUpon>202006202224327_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

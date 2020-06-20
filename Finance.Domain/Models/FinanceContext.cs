@@ -1,22 +1,16 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.Entity.Validation;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using Finance.Attributes;
-using Finance.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
+using Finance.Domain.Models.Identity;
 
 namespace Finance.Models
 {
-    public class FinanceContext : IdentityDbContext<Usuario>
+    public class FinanceContext : IdentityDbContext<Usuario, ApplicationRole, int, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
         public FinanceContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection"/*, throwIfV1Schema: false*/)
         {
-            //resolve erro finance2
             var ensureDLLIsCopied =
                 System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }

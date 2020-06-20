@@ -5,6 +5,7 @@ using Finance.Models;
 
 namespace Finance.Controllers
 {
+    [Authorize]
     public class DespesaCategoriaController : Controller
     {
         private FinanceContext context = new FinanceContext();
