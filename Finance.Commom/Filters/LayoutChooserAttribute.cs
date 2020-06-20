@@ -10,10 +10,8 @@ namespace Finance.Commom.Filters
 
             string masterName = filterContext?.HttpContext?.Session["Template"] as string;
 
-            if (!string.IsNullOrEmpty(masterName))
-            {
-                result.MasterName = masterName;
-            }
+            if (!string.IsNullOrEmpty(masterName) && result?.MasterName != null)
+                    result.MasterName = masterName;
 
             base.OnActionExecuted(filterContext);
         }
