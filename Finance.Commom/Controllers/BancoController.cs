@@ -7,7 +7,7 @@ namespace Finance.Controllers
 {   
     public class BancoController : Controller
     {
-        private FinanceContext context = new FinanceContext();
+        protected readonly FinanceContext context = new FinanceContext();
 
         //
         // GET: /Bancos/

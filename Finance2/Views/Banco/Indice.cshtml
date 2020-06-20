@@ -16,13 +16,10 @@
                 Nome
             </th>
             <th>
-                Contas
+                Data Criação
             </th>
             <th>
-                DataCriacao
-            </th>
-            <th>
-                UsuarioCriacao
+                Usuario Criação
             </th>
             <th></th>
         </tr>
@@ -36,20 +33,17 @@
                 @item.Nome
             </td>
             <td>
-                @(item.Contas == null ? "None" : item?.Contas?.FirstOrDefault()?.Nome.ToString())
-            </td>
-            <td>
-                @String.Format("{0:g}", item.DataCriacao)
+                @String.Format("{0:dd/MM/yyyy}", item.DataCriacao)
             </td>
             <td>
                 @item.UsuarioCriacao
             </td>
 
-            <td>
+            @*<td>
                 @Html.ActionLink("Editar", "Editar", new { id = item.BancoId }, new { @class = "button tiny primary" })
                 @Html.ActionLink("Detalhes", "Detalhes", new { id = item.BancoId }, new { @class = "button tiny secondary" })
                 @Html.ActionLink("Excluir", "Excluir", new { id = item.BancoId }, new { @class = "button tiny alert" })
-            </td>
+            </td>*@
         </tr>
     }
 

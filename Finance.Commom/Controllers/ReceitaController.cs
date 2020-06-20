@@ -7,12 +7,12 @@ namespace Finance.Controllers
 {
     public class ReceitaController : Controller
     {
-        private FinanceContext context = new FinanceContext();
+        protected readonly FinanceContext context = new FinanceContext();
 
         //
         // GET: /Receitas/
 
-        public async Task<ActionResult> Indice()
+        public virtual async Task<ActionResult> Indice()
         {
             return View(await context.Receitas.Include(receita => receita.ReceitaCategoria).Include(receita => receita.Banco).ToListAsync());
         }
@@ -29,7 +29,7 @@ namespace Finance.Controllers
         //
         // GET: /Receitas/Criar
 
-        public async Task<ActionResult> Criar()
+        public virtual async Task<ActionResult> Criar()
         {
             ViewBag.ReceitaCategoria = await context.ReceitaCategorias.ToListAsync();
             ViewBag.Banco = await context.Bancos.ToListAsync();
@@ -40,7 +40,7 @@ namespace Finance.Controllers
         // POST: /Receitas/Criar
 
         [HttpPost]
-        public async Task<ActionResult> Criar(Receita receita)
+        public virtual async Task<ActionResult> Criar(Receita receita)
         {
             if (ModelState.IsValid)
             {

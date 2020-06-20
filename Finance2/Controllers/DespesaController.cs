@@ -5,13 +5,13 @@ using System.Web.Mvc;
 
 namespace Finance2.Controllers
 {
-    public class BancoController : Finance.Controllers.BancoController
+    public class DespesaController : Finance.Controllers.DespesaController
     {
         //private FinanceContext context = new FinanceContext();
 
         public override async Task<ActionResult> Indice()
         {
-            return View(await context.Bancos.ToListAsync());
+            return View(await context.Despesas.ToListAsync());
         }
 
         public override Task<ActionResult> Criar()
@@ -20,9 +20,9 @@ namespace Finance2.Controllers
         }
 
         [HttpPost]
-        public override Task<ActionResult> Criar(Banco banco)
+        public override Task<ActionResult> Criar(Despesa despesa)
         {
-            return base.Criar(banco);
+            return base.Criar(despesa);
         }
     }
 }

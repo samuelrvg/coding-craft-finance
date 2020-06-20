@@ -40,7 +40,7 @@
                 @item.Descricao
             </td>
             <td>
-                @String.Format("{0:F}", item.Valor)
+                @String.Format("{0:N2}", item.Valor)
             </td>
             <td>
                 @Html.DisplayTextFor(_ => item.Banco.Nome).ToString()

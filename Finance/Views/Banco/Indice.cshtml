@@ -19,10 +19,10 @@
                 Contas
             </th>
             <th>
-                DataCriacao
+                Data Criação
             </th>
             <th>
-                UsuarioCriacao
+                Usuario Criação
             </th>
             <th></th>
         </tr>
@@ -39,7 +39,7 @@
                 @(item.Contas == null ? "None" : item?.Contas?.FirstOrDefault()?.Nome.ToString())
             </td>
             <td>
-                @String.Format("{0:g}", item.DataCriacao)
+                @String.Format("{0:dd/MM/yyyy}", item.DataCriacao)
             </td>
             <td>
                 @item.UsuarioCriacao

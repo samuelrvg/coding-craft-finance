@@ -1,10 +1,6 @@
 ﻿@model IEnumerable<Finance.Models.Despesa>
 
 @{
-    /**/
-
-    /**/
-
     ViewBag.Title = "Indice";
 }
 
@@ -22,10 +18,10 @@
             <th>
                 Valor
             </th>
-            <th>
+            @*<th>
                 DespesaCategoria
             </th>
-            <th></th>
+            <th></th>*@
         </tr>
     </thead>
 
@@ -37,17 +33,17 @@
                 @item.Descricao
             </td>
             <td>
-                @String.Format("{0:F}", item.Valor)
+                @String.Format("{0:N2}", item.Valor)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayTextFor(_ => item.DespesaCategoria.Nome).ToString()
-            </td>
+            </td>*@
 
-            <td>
+            @*<td>
                 @Html.ActionLink("Editar", "Editar", new { id = item.DespesaId }, new { @class = "button tiny primary" })
                 @Html.ActionLink("Detalhes", "Detalhes", new { id = item.DespesaId }, new { @class = "button tiny secondary" })
                 @Html.ActionLink("Excluir", "Excluir", new { id = item.DespesaId }, new { @class = "button tiny alert" })
-            </td>
+            </td>*@
         </tr>
     }
 
