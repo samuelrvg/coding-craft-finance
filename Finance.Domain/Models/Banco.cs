@@ -7,7 +7,7 @@ using System;
 namespace Finance.Models
 {
     [Table("Bancos")]
-    public class Banco : IEntidade<BancoAuditoria>
+    public class Banco //: IEntidade<BancoAuditoria>
     {
         [Key]
         public int BancoId { get; set; }

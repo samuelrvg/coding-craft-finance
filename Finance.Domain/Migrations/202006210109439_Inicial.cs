@@ -3,44 +3,10 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class Inicial : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.BancoAuditoria",
-                c => new
-                    {
-                        BancoAuditoriaId = c.Int(nullable: false, identity: true),
-                        BancoId = c.Int(nullable: false),
-                        Nome = c.String(nullable: false, maxLength: 200),
-                        DataCriacao = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
-                        UsuarioCriacao = c.String(),
-                    })
-                .PrimaryKey(t => t.BancoAuditoriaId)
-                .Index(t => t.Nome, name: "IUQ_BancosAuditoria_Nome");
-            
-            CreateTable(
-                "dbo.Contas",
-                c => new
-                    {
-                        ContaId = c.Int(nullable: false, identity: true),
-                        BancoId = c.Int(nullable: false),
-                        UsuarioId = c.String(),
-                        Nome = c.String(nullable: false, maxLength: 300),
-                        Descricao = c.String(),
-                        SaldoAtual = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Usuario_Id = c.Int(),
-                        BancoAuditoria_BancoAuditoriaId = c.Int(),
-                    })
-                .PrimaryKey(t => t.ContaId)
-                .ForeignKey("dbo.Bancos", t => t.BancoId)
-                .ForeignKey("dbo.AspNetUsers", t => t.Usuario_Id)
-                .ForeignKey("dbo.BancoAuditoria", t => t.BancoAuditoria_BancoAuditoriaId)
-                .Index(t => t.BancoId)
-                .Index(t => t.Usuario_Id)
-                .Index(t => t.BancoAuditoria_BancoAuditoriaId);
-            
             CreateTable(
                 "dbo.Bancos",
                 c => new
@@ -54,6 +20,24 @@
                     })
                 .PrimaryKey(t => t.BancoId)
                 .Index(t => t.Nome, name: "IUQ_Bancos_Nome");
+            
+            CreateTable(
+                "dbo.Contas",
+                c => new
+                    {
+                        ContaId = c.Int(nullable: false, identity: true),
+                        BancoId = c.Int(nullable: false),
+                        UsuarioId = c.String(),
+                        Nome = c.String(nullable: false, maxLength: 300),
+                        Descricao = c.String(),
+                        SaldoAtual = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Usuario_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.ContaId)
+                .ForeignKey("dbo.Bancos", t => t.BancoId)
+                .ForeignKey("dbo.AspNetUsers", t => t.Usuario_Id)
+                .Index(t => t.BancoId)
+                .Index(t => t.Usuario_Id);
             
             CreateTable(
                 "dbo.Receitas",
@@ -196,7 +180,6 @@
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Despesas", "DespesaCategoriaId", "dbo.DespesaCategorias");
-            DropForeignKey("dbo.Contas", "BancoAuditoria_BancoAuditoriaId", "dbo.BancoAuditoria");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Contas", "Usuario_Id", "dbo.AspNetUsers");
@@ -221,11 +204,9 @@
             DropIndex("dbo.Receitas", new[] { "Conta_ContaId" });
             DropIndex("dbo.Receitas", new[] { "BancoId" });
             DropIndex("dbo.Receitas", new[] { "ReceitaCategoriaId" });
-            DropIndex("dbo.Bancos", "IUQ_Bancos_Nome");
-            DropIndex("dbo.Contas", new[] { "BancoAuditoria_BancoAuditoriaId" });
             DropIndex("dbo.Contas", new[] { "Usuario_Id" });
             DropIndex("dbo.Contas", new[] { "BancoId" });
-            DropIndex("dbo.BancoAuditoria", "IUQ_BancosAuditoria_Nome");
+            DropIndex("dbo.Bancos", "IUQ_Bancos_Nome");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Despesas");
             DropTable("dbo.DespesaCategorias");
@@ -236,9 +217,8 @@
             DropTable("dbo.Transferencias");
             DropTable("dbo.ReceitaCategorias");
             DropTable("dbo.Receitas");
-            DropTable("dbo.Bancos");
             DropTable("dbo.Contas");
-            DropTable("dbo.BancoAuditoria");
+            DropTable("dbo.Bancos");
         }
     }
 }
