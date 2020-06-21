@@ -20,7 +20,6 @@ namespace Finance.Controllers
 
         //
         // GET: /DespesaCategorias/Detalhes/5
-
         public async Task<ActionResult> Detalhes(int id)
         {
             DespesaCategoria despesacategoria = await context.DespesaCategorias.SingleAsync(x => x.DespesaCategoriaId == id);
@@ -29,7 +28,6 @@ namespace Finance.Controllers
 
         //
         // GET: /DespesaCategorias/Criar
-
         public async Task<ActionResult> Criar()
         {
             return View();

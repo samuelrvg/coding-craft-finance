@@ -2,9 +2,12 @@
 //using StackExchange.Profiling.EntityFramework6;
 //using StackExchange.Profiling.Mvc;
 using Finance.Commom.Filters;
+using System.Security.Principal;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace Finance
 {

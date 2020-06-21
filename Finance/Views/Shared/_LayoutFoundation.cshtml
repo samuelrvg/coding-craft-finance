@@ -54,6 +54,7 @@
             <li>@Html.ActionLink("Despesas Categorias", "Indice", "DespesaCategoria")</li>
             <li>@Html.ActionLink("Foundation", "FoundationTemplate", "Home")</li>
             <li>@Html.ActionLink("Ink", "InkTemplate", "Home")</li>
+            @*@Html.Partial("_LoginPartial")*@
         </ul>
 
         @RenderBody()
@@ -65,6 +66,7 @@
         $(document).foundation();
     </script>
     @*Use the Scripts section to define page specific scripts*@
+    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
     @*@MiniProfiler.Current.RenderIncludes(position: RenderPosition.Right, showTrivial: false, showTimeWithChildren: false, startHidden: false)*@
 </body>
