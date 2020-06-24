@@ -12,7 +12,7 @@
 <legend>Transferencia</legend>
 
 <div class="display-label">Valor</div>
-<div class="display-field">@String.Format("{0:F}", Model.Valor)</div>
+<div class="display-field">@String.Format("{0:N2}", Model.Valor)</div>
 
 <div class="display-label">ContaOrigem</div>
 <div class="display-field">@Html.DisplayTextFor(_ => Model.ContaOrigem).ToString()</div>

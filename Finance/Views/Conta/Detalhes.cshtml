@@ -1,8 +1,6 @@
 ﻿@model Finance.Models.Conta
 
 @{
-    /**/
-
     ViewBag.Title = "Detalhes";
 }
 
@@ -16,10 +14,10 @@
 <div class="display-field">@Model.Descricao</div>
 
 <div class="display-label">SaldoAtual</div>
-<div class="display-field">@String.Format("{0:F}", Model.SaldoAtual)</div>
+<div class="display-field">@String.Format("{0:N2}", Model.SaldoAtual)</div>
 
 <div class="display-label">Banco</div>
-<div class="display-field">@Html.DisplayTextFor(_ => Model.Banco).ToString()</div>
+<div class="display-field">@Html.DisplayTextFor(_ => Model.Banco.Nome).ToString()</div>
 
 <div class="display-label">Usuario</div>
 <div class="display-field">@Html.DisplayTextFor(_ => Model.Usuario).ToString()</div>

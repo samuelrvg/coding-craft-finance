@@ -46,7 +46,7 @@
     {
         Text = Html.DisplayTextFor(_ => option.UserName).ToString(),
         Value = option.Id.ToString(),
-        Selected = (Model != null) && (option.Id == Model.UsuarioId)
+        Selected = (Model != null) && (option.Id.ToString() == Model.UsuarioId)
     }), "Selecione um item...")
     @Html.ValidationMessageFor(model => model.UsuarioId)
 </div>
